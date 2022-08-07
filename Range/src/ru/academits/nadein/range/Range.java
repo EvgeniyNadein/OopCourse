@@ -9,9 +9,6 @@ public class Range {
         this.to = to;
     }
 
-    public Range() {
-    }
-
     public double getFrom() {
         return from;
     }
@@ -32,105 +29,60 @@ public class Range {
         return to - from;
     }
 
+    @Override
+    public String toString() {
+        return "(" + from + " ," + to + ")";
+    }
+
     public boolean isInside(double number) {
         return number >= from && number <= to;
     }
 
-    public Range getRangeCrossover(Range object1, Range object2) {
-        Range rangeCrossover = new Range();
-
-        if (object1.getFrom() == object2.getFrom() && object1.getTo() == object2.getTo()) {
-            rangeCrossover.setFrom(object1.getFrom());
-            rangeCrossover.setTo(object1.getTo());
-
-            return rangeCrossover;
+    public Range getIntersection(Range range2) {
+        if (from == range2.from && to == range2.to) {
+            return new Range(from, to);
         }
 
-        if (object2.getFrom() >= object1.getFrom() && object2.getFrom() < object1.getTo()
-                && object2.getTo() >= object1.getTo()) {
-            rangeCrossover.setFrom(object2.getFrom());
-            rangeCrossover.setTo(object1.getTo());
-
-            return rangeCrossover;
-        }
-
-        if (object1.getFrom() >= object2.getFrom() && object1.getFrom() < object2.getTo()
-                && object1.getTo() >= object2.getTo()) {
-            rangeCrossover.setFrom(object2.getFrom());
-            rangeCrossover.setTo(object2.getTo());
-
-            return rangeCrossover;
+        if (range2.from >= from && range2.from < to || from >= range2.from && from < range2.to) {
+            return new Range(Math.max(range2.from, from), Math.min(to, range2.to));
         }
 
         return null;
     }
 
-    public Range[] getRangeUnion(Range object1, Range object2) {
-        Range unitedRange1 = new Range();
-        Range unitedRange2 = new Range();
-        Range[] rangeArray = {null, null};
-
-        if (object1.getFrom() == object2.getFrom() && object1.getTo() == object2.getTo()) {
-            unitedRange1.setFrom(object1.getFrom());
-            unitedRange1.setTo(object1.getTo());
-            rangeArray[0] = unitedRange1;
-        } else if (object2.getFrom() >= object1.getFrom() && object2.getFrom() <= object1.getTo()
-                && object2.getTo() >= object1.getTo()) {
-            unitedRange1.setFrom(object1.getFrom());
-            unitedRange1.setTo(object2.getTo());
-            rangeArray[0] = unitedRange1;
-        } else if (object1.getFrom() >= object2.getFrom() && object1.getFrom() <= object2.getTo()
-                && object1.getTo() >= object2.getTo()) {
-            unitedRange1.setFrom(object2.getFrom());
-            unitedRange1.setTo(object1.getTo());
-            rangeArray[0] = unitedRange1;
-        } else {
-            unitedRange1.setFrom(object1.getFrom());
-            unitedRange1.setTo(object1.getTo());
-
-            unitedRange2.setFrom(object2.getFrom());
-            unitedRange2.setTo(object2.getTo());
-
-            rangeArray[0] = unitedRange1;
-            rangeArray[1] = unitedRange2;
+    public Range[] getUnion(Range range2) {
+        if (range2.from >= from && range2.from <= to || from >= range2.from && from <= range2.to) {
+            return new Range[]{new Range(Math.min(from, range2.from), Math.max(to, range2.to))};
         }
 
-        return rangeArray;
+        return new Range[]{new Range(from, to), new Range(range2.from, range2.to)};
     }
 
-    public Range[] getRangeDifference(Range object1, Range object2) {
-        Range rangeDifference1 = new Range();
-        Range rangeDifference2 = new Range();
-        Range[] rangeArray = {null, null};
-
-        if (object2.getFrom() > object1.getFrom() && object2.getFrom() < object1.getTo()
-                && object2.getTo() >= object1.getTo()) {
-            rangeDifference1.setFrom(object1.getFrom());
-            rangeDifference1.setTo(object2.getFrom());
-            rangeArray[0] = rangeDifference1;
-        } else if (object1.getFrom() > object2.getFrom() && object1.getFrom() <= object2.getTo()
-                && object1.getTo() >= object2.getTo()) {
-            rangeDifference1.setFrom(object2.getFrom());
-            rangeDifference1.setTo(object1.getFrom());
-            rangeArray[0] = rangeDifference1;
-        } else if (object1.getFrom() > object2.getFrom() && object1.getTo() > object2.getTo()) {
-            rangeDifference1.setFrom(object1.getFrom());
-            rangeDifference1.setTo(object2.getFrom());
-            rangeArray[0] = rangeDifference1;
-
-            rangeDifference2.setFrom(object2.getTo());
-            rangeDifference2.setTo(object1.getTo());
-            rangeArray[1] = rangeDifference2;
-        } else if (object1.getFrom() > object2.getFrom() && object1.getTo() < object2.getTo()) {
-            rangeDifference1.setFrom(object2.getFrom());
-            rangeDifference1.setTo(object1.getFrom());
-            rangeArray[0] = rangeDifference1;
-
-            rangeDifference2.setFrom(object1.getTo());
-            rangeDifference2.setTo(object2.getTo());
-            rangeArray[1] = rangeDifference2;
+    public Range[] getDifference(Range range2) {
+        if (from == range2.from && to == range2.to) {
+            return new Range[0];
         }
 
-        return rangeArray;
+        if (from == range2.from && to < range2.to) {
+            return new Range[]{new Range(to + 0.1, range2.to)};
+        }
+
+        if (range2.from > from && range2.from < to && range2.to > to) {
+            return new Range[]{new Range(from, range2.from - 0.1)};
+        }
+
+        if (from > range2.from && from < range2.to && to > range2.to) {
+            return new Range[]{new Range(range2.to + 0.1, to)};
+        }
+
+        if (from > range2.from && to < range2.to) {
+            return new Range[]{new Range(range2.from, from - 0.1), new Range(to + 0.1, range2.to)};
+        }
+
+        if (from < range2.from && to > range2.to) {
+            return new Range[]{new Range(from, range2.from - 0.1), new Range(range2.to + 0.1, to)};
+        }
+
+        return new Range[]{new Range(from, to), new Range(range2.from, range2.to)};
     }
 }

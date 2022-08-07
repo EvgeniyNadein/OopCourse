@@ -2,71 +2,51 @@ package ru.academits.nadein.range_main;
 
 import ru.academits.nadein.range.Range;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Range range1 = new Range(1, 100);
-        Range range2 = new Range(100, 200);
+        Range range2 = new Range(50, 150);
 
-        if (range1.getRangeCrossover(range1, range2) != null) {
-            System.out.println("Начало диапазона пересечения = " + range1.getRangeCrossover(range1, range2).getFrom());
-            System.out.println("Конец диапазона пересечения = " + range1.getRangeCrossover(range1, range2).getTo());
+        if (range1.getIntersection(range2) != null) {
+            System.out.println("РРЅС‚РµСЂРІР°Р» РїРµСЂРµСЃРµС‡РµРЅРёСЏ = " + range1.getIntersection(range2).toString());
         } else {
-            System.out.println("Интервал пересечения = " + range1.getRangeCrossover(range1, range2));
+            System.out.println("РРЅС‚РµСЂРІР°Р» РїРµСЂРµСЃРµС‡РµРЅРёСЏ = " + range1.getIntersection(range2));
         }
 
         System.out.println();
 
-        if (range1.getRangeUnion(range1, range2)[1] != null) {
-            System.out.println("Начало объединенного интервала1 = " + range1.getRangeUnion(range1, range2)[0].getFrom());
-            System.out.println("Конец объединенного интервала1 = " + range1.getRangeUnion(range1, range2)[0].getTo());
-
-            System.out.println("Начало объединенного интервала2 = " + range1.getRangeUnion(range1, range2)[1].getFrom());
-            System.out.println("Конец объединенного интервала2 = " + range1.getRangeUnion(range1, range2)[1].getTo());
-        } else {
-            System.out.println("Начало объединенного интервала = " + range1.getRangeUnion(range1, range2)[0].getFrom());
-            System.out.println("Конец объединенного интервала = " + range1.getRangeUnion(range1, range2)[0].getTo());
-        }
+        System.out.println("РћР±СЉРµРґРёРЅРµРЅРЅС‹Р№ РёРЅС‚РµСЂРІР°Р»Р° = " + Arrays.toString(range1.getUnion(range2)));
 
         System.out.println();
 
-        if (range1.getRangeDifference(range1, range2)[1] != null) {
-            System.out.println("Начало 1 разности интервалов = " + range1.getRangeDifference(range1, range2)[0].getFrom());
-            System.out.println("Конец 1 разности интервалов = " + range1.getRangeDifference(range1, range2)[0].getTo());
-
-            System.out.println("Начало 2 разности интервалов = " + range1.getRangeDifference(range1, range2)[1].getFrom());
-            System.out.println("Конец 2 разности интервалов = " + range1.getRangeDifference(range1, range2)[1].getTo());
-        } else if (range1.getRangeDifference(range1, range2)[0] != null){
-            System.out.println("Начало разности интервалов = " + range1.getRangeDifference(range1, range2)[0].getFrom());
-            System.out.println("Конец разности интервалов = " + range1.getRangeDifference(range1, range2)[0].getTo());
-        } else {
-            System.out.println("Разность интервалов = " + range1.getRangeDifference(range1, range2)[0]);
-        }
+        System.out.println("Р Р°Р·РЅРѕСЃС‚СЊ РёРЅС‚РµСЂРІР°Р»РѕРІ = " + Arrays.toString(range1.getDifference(range2)));
 
         System.out.println();
 
-        System.out.println("Начало диапазона = " + range1.getFrom());
-        System.out.println("Конец диапазона = " + range1.getTo());
-        System.out.println("Длина диапазона = " + range1.getLength());
+        System.out.println("РќР°С‡Р°Р»Рѕ РґРёР°РїР°Р·РѕРЅР° = " + range1.getFrom());
+        System.out.println("РљРѕРЅРµС† РґРёР°РїР°Р·РѕРЅР° = " + range1.getTo());
+        System.out.println("Р”Р»РёРЅР° РґРёР°РїР°Р·РѕРЅР° = " + range1.getLength());
 
-        System.out.println("Введите число для определения принадлежности к диапазону:");
+        System.out.println("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё Рє РґРёР°РїР°Р·РѕРЅСѓ:");
         double number1 = scanner.nextDouble();
 
-        System.out.println("Число " + number1 + " принадлежит диапазону: " + range1.isInside(number1));
+        System.out.println("Р§РёСЃР»Рѕ " + number1 + " РїСЂРёРЅР°РґР»РµР¶РёС‚ РґРёР°РїР°Р·РѕРЅСѓ: " + range1.isInside(number1));
         System.out.println();
 
         range1.setFrom(20);
         range1.setTo(80);
 
-        System.out.println("Начало диапазона = " + range1.getFrom());
-        System.out.println("Конец диапазона = " + range1.getTo());
-        System.out.println("Длина диапазона = " + range1.getLength());
+        System.out.println("РќР°С‡Р°Р»Рѕ РґРёР°РїР°Р·РѕРЅР° = " + range1.getFrom());
+        System.out.println("РљРѕРЅРµС† РґРёР°РїР°Р·РѕРЅР° = " + range1.getTo());
+        System.out.println("Р”Р»РёРЅР° РґРёР°РїР°Р·РѕРЅР° = " + range1.getLength());
 
-        System.out.println("Введите число для определения принадлежности к диапазону:");
+        System.out.println("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё Рє РґРёР°РїР°Р·РѕРЅСѓ:");
         double number2 = scanner.nextDouble();
 
-        System.out.println("Число " + number2 + " принадлежит диапазону: " + range1.isInside(number2));
+        System.out.println("Р§РёСЃР»Рѕ " + number2 + " РїСЂРёРЅР°РґР»РµР¶РёС‚ РґРёР°РїР°Р·РѕРЅСѓ: " + range1.isInside(number2));
     }
 }
