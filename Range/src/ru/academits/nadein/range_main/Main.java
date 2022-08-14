@@ -8,18 +8,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Range range1 = new Range(1, 100);
-        Range range2 = new Range(50, 150);
+        Range range1 = new Range(1, 5);
+        Range range2 = new Range(6, 8);
 
-        if (range1.getIntersection(range2) != null) {
-            System.out.println("Интервал пересечения = " + range1.getIntersection(range2).toString());
-        } else {
-            System.out.println("Интервал пересечения = " + range1.getIntersection(range2));
-        }
+        System.out.println("Интервал пересечения = " + range1.getIntersection(range2));
 
         System.out.println();
 
-        System.out.println("Объединенный интервала = " + Arrays.toString(range1.getUnion(range2)));
+        System.out.println("Объединение интервалов = " + Arrays.toString(range1.getUnion(range2)));
 
         System.out.println();
 
