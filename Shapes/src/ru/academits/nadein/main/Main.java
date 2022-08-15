@@ -16,7 +16,7 @@ public class Main {
         System.out.println("Периметр квадрата = " + square1.getPerimeter());
         System.out.println("Высота квадрата = " + square1.getHeight());
         System.out.println("Ширина квадрата = " + square1.getWidth());
-        System.out.println("Ширина квадрата = " + square1.getName());
+        System.out.println("Имя квадрата = " + square1.getName());
 
         System.out.println();
 
@@ -26,7 +26,7 @@ public class Main {
         System.out.println("Периметр прямоугольника = " + rectangle.getPerimeter());
         System.out.println("Высота прямоугольника = " + rectangle.getHeight());
         System.out.println("Ширина прямоугольника = " + rectangle.getWidth());
-        System.out.println("Ширина прямоугольника = " + rectangle.getName());
+        System.out.println("Имя прямоугольника = " + rectangle.getName());
 
         System.out.println();
 
@@ -36,7 +36,7 @@ public class Main {
         System.out.println("Периметр окружности = " + circle.getPerimeter());
         System.out.println("Высота окружности = " + circle.getHeight());
         System.out.println("Ширина окружности = " + circle.getWidth());
-        System.out.println("Ширина окружности = " + circle.getName());
+        System.out.println("Имя окружности = " + circle.getName());
 
         System.out.println();
 
@@ -46,7 +46,7 @@ public class Main {
         System.out.println("Периметр треугольника = " + triangle.getPerimeter());
         System.out.println("Высота треугольника = " + triangle.getHeight());
         System.out.println("Ширина треугольника = " + triangle.getWidth());
-        System.out.println("Ширина треугольника = " + triangle.getName());
+        System.out.println("Имя треугольника = " + triangle.getName());
 
         System.out.println();
 
@@ -56,7 +56,7 @@ public class Main {
         System.out.println("Периметр квадрата 2 = " + square2.getPerimeter());
         System.out.println("Высота квадрата 2 = " + square2.getHeight());
         System.out.println("Ширина квадрата 2 = " + square2.getWidth());
-        System.out.println("Ширина квадрата 2 = " + square2.getName());
+        System.out.println("Имя квадрата 2 = " + square2.getName());
 
         System.out.println();
 
