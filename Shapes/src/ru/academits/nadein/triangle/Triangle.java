@@ -1,4 +1,4 @@
-package triangle;
+package ru.academits.nadein.triangle;
 
 import ru.academits.nadein.shapes.Shape;
 
@@ -9,14 +9,16 @@ public class Triangle implements Shape {
     private double yB;
     private double xC;
     private double yC;
+    private String name;
 
-    public Triangle(double xA, double yA, double xB, double yB, double xC, double yC) {
+    public Triangle(double xA, double yA, double xB, double yB, double xC, double yC, String name) {
         this.xA = xA;
         this.yA = yA;
         this.xB = xB;
         this.yB = yB;
         this.xC = xC;
         this.yC = yC;
+        this.name = name;
     }
 
     public void setxA(double xA) {
@@ -41,6 +43,11 @@ public class Triangle implements Shape {
 
     public void setyC(double yC) {
         this.yC = yC;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + getArea() + ", " + name + ")";
     }
 
     @Override
@@ -89,5 +96,10 @@ public class Triangle implements Shape {
         }
 
         return trianglePerimeter;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -4,13 +4,20 @@ import ru.academits.nadein.shapes.Shape;
 
 public class Square implements Shape {
     private double sideLength;
+    private String name;
 
-    public Square (double sideLength) {
+    public Square(double sideLength, String name) {
+        this.sideLength = sideLength;
+        this.name = name;
+    }
+
+    public void setSideLength(double sideLength) {
         this.sideLength = sideLength;
     }
 
-    public void setSideLength (double sideLength) {
-        this.sideLength = sideLength;
+    @Override
+    public String toString() {
+        return "(" + getArea() + ", " + name + ")";
     }
 
     @Override
@@ -31,5 +38,10 @@ public class Square implements Shape {
     @Override
     public double getPerimeter() {
         return 4 * sideLength;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

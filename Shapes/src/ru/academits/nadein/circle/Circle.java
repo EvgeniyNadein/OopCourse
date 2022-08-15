@@ -4,13 +4,20 @@ import ru.academits.nadein.shapes.Shape;
 
 public class Circle implements Shape {
     private double radius;
+    private String name;
 
-    public Circle(double radius) {
+    public Circle(double radius, String name) {
         this.radius = radius;
+        this.name = name;
     }
 
     public void setRadius(double radius) {
         this.radius = radius;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + getArea() + ", " + name + ")";
     }
 
     @Override
@@ -31,5 +38,10 @@ public class Circle implements Shape {
     @Override
     public double getPerimeter() {
         return 2 * Math.PI * radius;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }
