@@ -16,7 +16,7 @@ public interface Shape {
     @Override
     String toString();
 
-    public static Comparator<Shape> areaComparator = new Comparator<>() {
+    Comparator<Shape> areaComparator = new Comparator<>() {
         @Override
         public int compare(Shape o1, Shape o2) {
             return (int) (o1.getArea() - o2.getArea());
