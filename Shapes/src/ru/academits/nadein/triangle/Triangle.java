@@ -9,16 +9,14 @@ public class Triangle implements Shape {
     private double yB;
     private double xC;
     private double yC;
-    private String name;
 
-    public Triangle(double xA, double yA, double xB, double yB, double xC, double yC, String name) {
+    public Triangle(double xA, double yA, double xB, double yB, double xC, double yC) {
         this.xA = xA;
         this.yA = yA;
         this.xB = xB;
         this.yB = yB;
         this.xC = xC;
         this.yC = yC;
-        this.name = name;
     }
 
     public void setxA(double xA) {
@@ -47,7 +45,7 @@ public class Triangle implements Shape {
 
     @Override
     public String toString() {
-        return "(" + getArea() + ", " + name + ")";
+        return "(" + getArea() + ")";
     }
 
     @Override
@@ -96,10 +94,5 @@ public class Triangle implements Shape {
         }
 
         return trianglePerimeter;
-    }
-
-    @Override
-    public String getName() {
-        return name;
     }
 }

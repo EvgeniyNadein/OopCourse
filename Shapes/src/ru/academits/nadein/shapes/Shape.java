@@ -11,11 +11,6 @@ public interface Shape {
 
     double getPerimeter();
 
-    String getName();
-
-    @Override
-    String toString();
-
     Comparator<Shape> areaComparator = new Comparator<>() {
         @Override
         public int compare(Shape o1, Shape o2) {

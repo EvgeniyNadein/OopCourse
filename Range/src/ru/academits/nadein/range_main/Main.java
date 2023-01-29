@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Range range1 = new Range(1, 5);
-        Range range2 = new Range(4, 8);
+        Range range1 = new Range(1, 8);
+        Range range2 = new Range(3, 5);
 
         System.out.println("Интервал пересечения = " + range1.getIntersection(range2));
 
