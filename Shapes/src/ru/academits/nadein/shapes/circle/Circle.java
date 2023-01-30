@@ -1,8 +1,9 @@
-package ru.academits.nadein.circle;
+package ru.academits.nadein.shapes.circle;
 
-import ru.academits.nadein.shapes.Shape;
+import ru.academits.nadein.shapes.areaComparator.MaxAreaShapesComparator;
+import ru.academits.nadein.shapes.shape.Shape;
 
-public class Circle implements Shape {
+public class Circle extends MaxAreaShapesComparator implements Shape {
     private double radius;
 
     public Circle(double radius) {
@@ -11,6 +12,10 @@ public class Circle implements Shape {
 
     public void setRadius(double radius) {
         this.radius = radius;
+    }
+
+    public double getRadius() {
+        return radius;
     }
 
     @Override
@@ -30,7 +35,7 @@ public class Circle implements Shape {
 
     @Override
     public double getArea() {
-        return Math.PI * Math.pow(radius, 2);
+        return Math.PI * (radius * radius);
     }
 
     @Override

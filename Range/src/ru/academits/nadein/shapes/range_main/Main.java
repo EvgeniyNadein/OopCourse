@@ -1,6 +1,6 @@
-package ru.academits.nadein.range_main;
+package ru.academits.nadein.shapes.range_main;
 
-import ru.academits.nadein.range.Range;
+import ru.academits.nadein.shapes.range.Range;
 
 import java.util.Arrays;
 import java.util.Scanner;

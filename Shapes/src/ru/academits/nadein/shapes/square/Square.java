@@ -1,8 +1,9 @@
-package ru.academits.nadein.square;
+package ru.academits.nadein.shapes.square;
 
-import ru.academits.nadein.shapes.Shape;
+import ru.academits.nadein.shapes.areaComparator.MaxAreaShapesComparator;
+import ru.academits.nadein.shapes.shape.Shape;
 
-public class Square implements Shape {
+public class Square extends MaxAreaShapesComparator implements Shape {
     private double sideLength;
 
     public Square(double sideLength) {

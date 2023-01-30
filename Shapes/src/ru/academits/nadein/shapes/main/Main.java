@@ -1,10 +1,11 @@
-package ru.academits.nadein.main;
+package ru.academits.nadein.shapes.main;
 
-import ru.academits.nadein.circle.Circle;
-import ru.academits.nadein.rectangle.Rectangle;
-import ru.academits.nadein.shapes.Shape;
-import ru.academits.nadein.square.Square;
-import ru.academits.nadein.triangle.Triangle;
+import ru.academits.nadein.shapes.areaComparator.MaxAreaShapesComparator;
+import ru.academits.nadein.shapes.circle.Circle;
+import ru.academits.nadein.shapes.rectangle.Rectangle;
+import ru.academits.nadein.shapes.shape.Shape;
+import ru.academits.nadein.shapes.triangle.Triangle;
+import ru.academits.nadein.shapes.square.Square;
 
 import java.util.Arrays;
 
@@ -62,7 +63,7 @@ public class Main {
         array[3] = triangle;
         array[4] = square2;
 
-        Arrays.sort(array, Shape.areaComparator);
-        System.out.println("Отсортировано по площади" + Arrays.toString(array));
+        Arrays.sort(array, new MaxAreaShapesComparator());
+        System.out.println("Отсортировано по площади " + Arrays.toString(array));
     }
 }
