@@ -70,7 +70,7 @@ public class Triangle extends MaxAreaShapesComparator implements Shape {
 
     @Override
     public String toString() {
-        return "(" + getArea() + ")";
+        return "(" + getX1() + ";" + getY1() + ")" + "(" + getX2() + ";" + getY2() + ")" + "(" + getX3() + ";" + getY3() + ")";
     }
 
     @Override

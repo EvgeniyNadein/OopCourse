@@ -7,6 +7,8 @@ import java.util.Comparator;
 public class MaxAreaShapesComparator  implements Comparator<Shape> {
     @Override
     public int compare(Shape shape1, Shape shape2) {
-        return (int)(shape2.getArea() - shape1.getArea());
+        double d2 = shape2.getArea();
+        double d1 = shape1.getArea();
+        return Double.compare(d2, d1);
     }
 }

@@ -2,6 +2,7 @@ package ru.academits.nadein.shapes.main;
 
 import ru.academits.nadein.shapes.areaComparator.MaxAreaShapesComparator;
 import ru.academits.nadein.shapes.circle.Circle;
+import ru.academits.nadein.shapes.perimeterComparator.MaxPerimeterComparator;
 import ru.academits.nadein.shapes.rectangle.Rectangle;
 import ru.academits.nadein.shapes.shape.Shape;
 import ru.academits.nadein.shapes.triangle.Triangle;
@@ -64,6 +65,9 @@ public class Main {
         array[4] = square2;
 
         Arrays.sort(array, new MaxAreaShapesComparator());
-        System.out.println("Отсортировано по площади " + Arrays.toString(array));
+        System.out.println("Наибольшая площадь: " + array[0].toString());
+
+        Arrays.sort(array, new MaxPerimeterComparator());
+        System.out.println("Второй по величине периметр: " + array[1].toString());
     }
 }
