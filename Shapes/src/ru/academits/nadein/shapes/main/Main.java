@@ -1,8 +1,8 @@
 package ru.academits.nadein.shapes.main;
 
-import ru.academits.nadein.shapes.areaComparator.MaxAreaShapesComparator;
+import ru.academits.nadein.shapes.areaComparator.MaxShapesAreaComparator;
 import ru.academits.nadein.shapes.circle.Circle;
-import ru.academits.nadein.shapes.perimeterComparator.MaxPerimeterComparator;
+import ru.academits.nadein.shapes.perimeterComparator.MaxShapesPerimeterComparator;
 import ru.academits.nadein.shapes.rectangle.Rectangle;
 import ru.academits.nadein.shapes.shape.Shape;
 import ru.academits.nadein.shapes.triangle.Triangle;
@@ -48,7 +48,7 @@ public class Main {
 
         System.out.println();
 
-        Square square2 = new Square(3);
+        Square square2 = new Square(3.5);
 
         System.out.println("Площадь квадрата 2 = " + square2.getArea());
         System.out.println("Периметр квадрата 2 = " + square2.getPerimeter());
@@ -57,17 +57,12 @@ public class Main {
 
         System.out.println();
 
-        Shape[] array = new Shape[5];
-        array[0] = square1;
-        array[1] = rectangle;
-        array[2] = circle;
-        array[3] = triangle;
-        array[4] = square2;
+        Shape[] array = {square1, rectangle, circle, triangle, square2};
 
-        Arrays.sort(array, new MaxAreaShapesComparator());
-        System.out.println("Наибольшая площадь: " + array[0].toString());
+        Arrays.sort(array, new MaxShapesAreaComparator());
+        System.out.println("Наибольшая площадь фигур: " + array[0].toString());
 
-        Arrays.sort(array, new MaxPerimeterComparator());
-        System.out.println("Второй по величине периметр: " + array[1].toString());
+        Arrays.sort(array, new MaxShapesPerimeterComparator());
+        System.out.println("Фигура имеющая второй по величине периметр: " + array[1].toString());
     }
 }

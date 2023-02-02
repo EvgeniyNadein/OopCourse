@@ -1,9 +1,8 @@
 package ru.academits.nadein.shapes.triangle;
 
-import ru.academits.nadein.shapes.areaComparator.MaxAreaShapesComparator;
 import ru.academits.nadein.shapes.shape.Shape;
 
-public class Triangle extends MaxAreaShapesComparator implements Shape {
+public class Triangle implements Shape {
     private double x1;
     private double y1;
     private double x2;
@@ -66,6 +65,33 @@ public class Triangle extends MaxAreaShapesComparator implements Shape {
 
     public double getY3() {
         return y3;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+
+        if (o == null || o.getClass() != getClass()) {
+            return false;
+        }
+
+        Triangle triangle = (Triangle) o;
+        return x1 == triangle.x1 && x2 == triangle.x2 && x3 == triangle.x3 && y1 == triangle.y1 && y2 == triangle.y2 && y3 == triangle.y3;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 37;
+        int hash = 1;
+        hash = prime * hash + Double.hashCode(x1);
+        hash = prime * hash + Double.hashCode(y1);
+        hash = prime * hash + Double.hashCode(x2);
+        hash = prime * hash + Double.hashCode(y2);
+        hash = prime * hash + Double.hashCode(x3);
+        hash = prime * hash + Double.hashCode(y3);
+        return hash;
     }
 
     @Override

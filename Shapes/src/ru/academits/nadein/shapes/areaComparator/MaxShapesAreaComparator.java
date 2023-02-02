@@ -4,7 +4,7 @@ import ru.academits.nadein.shapes.shape.Shape;
 
 import java.util.Comparator;
 
-public class MaxAreaShapesComparator  implements Comparator<Shape> {
+public final class MaxShapesAreaComparator implements Comparator<Shape> {
     @Override
     public int compare(Shape shape1, Shape shape2) {
         double d2 = shape2.getArea();
