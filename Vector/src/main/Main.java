@@ -17,5 +17,8 @@ public class Main {
         Vector vector3 = new Vector(3);
         System.out.println("вектор 3: " + vector3);
         System.out.println(vector3.getSize());
+
+        Vector vector4 = new Vector(5, inputArray);
+        System.out.println("вектор 4: " + vector4);
     }
 }

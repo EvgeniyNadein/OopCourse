@@ -3,8 +3,8 @@ package vector;
 import java.util.Arrays;
 
 public class Vector {
-    private int n;
-    private double[] array;
+    private final int n;
+    private final double[] array;
     private Vector vector;
 
     public Vector(int n) {
