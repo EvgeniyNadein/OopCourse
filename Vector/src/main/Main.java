@@ -5,7 +5,7 @@ import vector.Vector;
 public class Main {
 
     public static void main(String[] args) {
-        double[] inputArray = {1};
+        double[] inputArray = {1, 4};
         Vector vector1 = new Vector(inputArray);
         System.out.println(vector1.get(0));
         System.out.println("вектор 1: " + vector1);
@@ -19,6 +19,8 @@ public class Main {
         System.out.println(vector3.getSize());
 
         Vector vector4 = new Vector(5, inputArray);
+        System.out.println("вектор 4: " + vector4);
+        vector4.vectorReversal();
         System.out.println("вектор 4: " + vector4);
     }
 }

@@ -14,7 +14,7 @@ public class Vector {
             throw new IllegalArgumentException("Размер вектора не может быть равен 0");
         }
 
-        this.array = new double[n];
+        this.array = new double[this.n];
         Arrays.fill(array, 0);
     }
 
@@ -26,7 +26,7 @@ public class Vector {
 
     public Vector(int n, double[] inputArray) {
         this.n = n;
-        this.array = Arrays.copyOf(inputArray, n);
+        this.array = Arrays.copyOf(inputArray, this.n);
     }
 
     public Vector(Vector inputVector) {
@@ -51,5 +51,11 @@ public class Vector {
 
     public void set(int i, double value) {
         array[i] = value;
+    }
+
+    public  void vectorReversal () {
+        for (int i =0; i < array.length; i++) {
+            array[i] *= -1;
+        }
     }
 }
