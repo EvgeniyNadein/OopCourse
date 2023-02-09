@@ -1,6 +1,6 @@
-package ru.academits.nadein.shapes.square;
+package ru.academits.nadein.shapes.shapes.square;
 
-import ru.academits.nadein.shapes.shape.Shape;
+import ru.academits.nadein.shapes.shapes.shape.Shape;
 
 public class Square implements Shape {
     private double sideLength;
@@ -9,12 +9,12 @@ public class Square implements Shape {
         this.sideLength = sideLength;
     }
 
-    public void setSideLength(double sideLength) {
-        this.sideLength = sideLength;
-    }
-
     public double getSideLength() {
         return sideLength;
+    }
+
+    public void setSideLength(double sideLength) {
+        this.sideLength = sideLength;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class Square implements Shape {
 
     @Override
     public String toString() {
-        return "(" + getArea() + ")";
+        return " вадрат, стороны которого равны: " + sideLength;
     }
 
     @Override

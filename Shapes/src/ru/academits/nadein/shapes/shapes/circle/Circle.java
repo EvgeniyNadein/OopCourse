@@ -1,6 +1,6 @@
-package ru.academits.nadein.shapes.circle;
+package ru.academits.nadein.shapes.shapes.circle;
 
-import ru.academits.nadein.shapes.shape.Shape;
+import ru.academits.nadein.shapes.shapes.shape.Shape;
 
 public class Circle implements Shape {
     private double radius;
@@ -9,12 +9,12 @@ public class Circle implements Shape {
         this.radius = radius;
     }
 
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-
     public double getRadius() {
         return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class Circle implements Shape {
 
     @Override
     public String toString() {
-        return "(" + getArea() + ")";
+        return "Окружность, радиус которой равен: " + radius;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Circle implements Shape {
 
     @Override
     public double getArea() {
-        return Math.PI * (radius * radius);
+        return Math.PI * radius * radius;
     }
 
     @Override

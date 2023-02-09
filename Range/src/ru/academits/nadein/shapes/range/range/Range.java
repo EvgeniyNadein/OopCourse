@@ -1,4 +1,4 @@
-package ru.academits.nadein.range.range;
+package ru.academits.nadein.shapes.range.range;
 
 public class Range {
     private double from;

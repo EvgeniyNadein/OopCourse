@@ -1,12 +1,12 @@
 package ru.academits.nadein.shapes.main;
 
-import ru.academits.nadein.shapes.areaComparator.MaxShapesAreaComparator;
-import ru.academits.nadein.shapes.circle.Circle;
-import ru.academits.nadein.shapes.perimeterComparator.MaxShapesPerimeterComparator;
-import ru.academits.nadein.shapes.rectangle.Rectangle;
-import ru.academits.nadein.shapes.shape.Shape;
-import ru.academits.nadein.shapes.triangle.Triangle;
-import ru.academits.nadein.shapes.square.Square;
+import ru.academits.nadein.shapes.shapes.circle.Circle;
+import ru.academits.nadein.shapes.comparators.shape_area_comparator.ShapeAreaComparator;
+import ru.academits.nadein.shapes.comparators.shape_perimeter_comparator.ShapePerimeterComparator;
+import ru.academits.nadein.shapes.shapes.rectangle.Rectangle;
+import ru.academits.nadein.shapes.shapes.shape.Shape;
+import ru.academits.nadein.shapes.shapes.triangle.Triangle;
+import ru.academits.nadein.shapes.shapes.square.Square;
 
 import java.util.Arrays;
 
@@ -57,12 +57,12 @@ public class Main {
 
         System.out.println();
 
-        Shape[] array = {square1, rectangle, circle, triangle, square2};
+        Shape[] shapes = {square1, rectangle, circle, triangle, square2};
 
-        Arrays.sort(array, new MaxShapesAreaComparator());
-        System.out.println("Наибольшая площадь фигур: " + array[0].toString());
+        Arrays.sort(shapes, new ShapeAreaComparator());
+        System.out.println("Наибольшая площадь фигур: " + shapes[shapes.length - 1]);
 
-        Arrays.sort(array, new MaxShapesPerimeterComparator());
-        System.out.println("Фигура имеющая второй по величине периметр: " + array[1].toString());
+        Arrays.sort(shapes, new ShapePerimeterComparator());
+        System.out.println("Фигура имеющая второй по величине периметр: " + shapes[shapes.length - 2]);
     }
 }

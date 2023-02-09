@@ -1,6 +1,6 @@
-package ru.academits.nadein.shapes.rectangle;
+package ru.academits.nadein.shapes.shapes.rectangle;
 
-import ru.academits.nadein.shapes.shape.Shape;
+import ru.academits.nadein.shapes.shapes.shape.Shape;
 
 public class Rectangle implements Shape {
     private double height;
@@ -11,8 +11,18 @@ public class Rectangle implements Shape {
         this.width = width;
     }
 
+    @Override
+    public double getHeight() {
+        return height;
+    }
+
     public void setHeight(double height) {
         this.height = height;
+    }
+
+    @Override
+    public double getWidth() {
+        return width;
     }
 
     public void setWidth(double width) {
@@ -44,17 +54,7 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return "(" + getArea() + ")";
-    }
-
-    @Override
-    public double getWidth() {
-        return width;
-    }
-
-    @Override
-    public double getHeight() {
-        return height;
+        return "Прямоугольник, высота и ширина которого равны: " + height  + " и " + width;
     }
 
     @Override

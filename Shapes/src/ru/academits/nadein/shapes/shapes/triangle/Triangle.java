@@ -1,6 +1,6 @@
-package ru.academits.nadein.shapes.triangle;
+package ru.academits.nadein.shapes.shapes.triangle;
 
-import ru.academits.nadein.shapes.shape.Shape;
+import ru.academits.nadein.shapes.shapes.shape.Shape;
 
 public class Triangle implements Shape {
     private double x1;
@@ -19,52 +19,52 @@ public class Triangle implements Shape {
         this.y3 = y3;
     }
 
-    public void setX1(double x1) {
-        this.x1 = x1;
-    }
-
     public double getX1() {
         return x1;
     }
 
-    public void setX2(double x2) {
-        this.x2 = x2;
+    public void setX1(double x1) {
+        this.x1 = x1;
     }
 
     public double getX2() {
         return x2;
     }
 
-    public void setX3(double x3) {
-        this.x3 = x3;
+    public void setX2(double x2) {
+        this.x2 = x2;
     }
 
     public double getX3() {
         return x3;
     }
 
-    public void setY1(double y1) {
-        this.y1 = y1;
+    public void setX3(double x3) {
+        this.x3 = x3;
     }
 
     public double getY1() {
         return y1;
     }
 
-    public void setY2(double y2) {
-        this.y2 = y2;
+    public void setY1(double y1) {
+        this.y1 = y1;
     }
 
     public double getY2() {
         return y2;
     }
 
-    public void setY3(double y3) {
-        this.y3 = y3;
+    public void setY2(double y2) {
+        this.y2 = y2;
     }
 
     public double getY3() {
         return y3;
+    }
+
+    public void setY3(double y3) {
+        this.y3 = y3;
     }
 
     @Override
@@ -78,7 +78,8 @@ public class Triangle implements Shape {
         }
 
         Triangle triangle = (Triangle) o;
-        return x1 == triangle.x1 && x2 == triangle.x2 && x3 == triangle.x3 && y1 == triangle.y1 && y2 == triangle.y2 && y3 == triangle.y3;
+        return x1 == triangle.x1 && x2 == triangle.x2 && x3 == triangle.x3
+                && y1 == triangle.y1 && y2 == triangle.y2 && y3 == triangle.y3;
     }
 
     @Override
@@ -96,7 +97,7 @@ public class Triangle implements Shape {
 
     @Override
     public String toString() {
-        return "(" + getX1() + ";" + getY1() + ")" + "(" + getX2() + ";" + getY2() + ")" + "(" + getX3() + ";" + getY3() + ")";
+        return "Треугольник, координаты вершин которого равны: (" + x1 + "; " + y1 + "), (" + x2 + "; " + y2 + "), (" + x3 + "; " + y3 + ")";
     }
 
     @Override
@@ -109,6 +110,18 @@ public class Triangle implements Shape {
         return Math.max(Math.max(y1, y2), y3) - Math.min(Math.min(y1, y2), y3);
     }
 
+    public double getSideABLength() {
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    }
+
+    public double getSideACLength() {
+        return Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2));
+    }
+
+    public double getSideBCLength() {
+        return Math.sqrt(Math.pow(x2 - x3, 2) + Math.pow(y2 - y3, 2));
+    }
+
     @Override
     public double getArea() {
         double epsilon = 1.0e-10;
@@ -117,14 +130,10 @@ public class Triangle implements Shape {
             return 0;
         }
 
-        double sideABLength = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        double sideACLength = Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2));
-        double sideBCLength = Math.sqrt(Math.pow(x2 - x3, 2) + Math.pow(y2 - y3, 2));
+        double triangleSemiPerimeter = (getSideABLength() + getSideACLength() + getSideBCLength()) / 2;
 
-        double triangleSemiPerimeter = (sideABLength + sideACLength + sideBCLength) / 2;
-
-        return Math.sqrt(triangleSemiPerimeter * (triangleSemiPerimeter - sideABLength)
-                * (triangleSemiPerimeter - sideACLength) * (triangleSemiPerimeter - sideBCLength));
+        return Math.sqrt(triangleSemiPerimeter * (triangleSemiPerimeter - getSideABLength())
+                * (triangleSemiPerimeter - getSideACLength()) * (triangleSemiPerimeter - getSideBCLength()));
     }
 
     @Override
@@ -134,10 +143,7 @@ public class Triangle implements Shape {
         if (Math.abs((x1 - x3) * (y2 - y3) - (x2 - x3) * (y1 - y3)) <= epsilon) {
             return 0;
         }
-        double sideABLength = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        double sideACLength = Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2));
-        double sideBCLength = Math.sqrt(Math.pow(x2 - x3, 2) + Math.pow(y2 - y3, 2));
 
-        return sideABLength + sideACLength + sideBCLength;
+        return getSideABLength() + getSideACLength() + getSideBCLength();
     }
 }
