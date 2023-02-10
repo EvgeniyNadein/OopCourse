@@ -3,8 +3,8 @@ package vector;
 import java.util.Arrays;
 
 public class Vector {
-    private final int n;
-    private final double[] array;
+    private int n;
+    private double[] array;
     private Vector vector;
 
     public Vector(int n) {
@@ -14,7 +14,7 @@ public class Vector {
             throw new IllegalArgumentException("Размер вектора не может быть равен 0");
         }
 
-        this.array = new double[this.n];
+        this.array = new double[n];
         Arrays.fill(array, 0);
     }
 
@@ -34,7 +34,7 @@ public class Vector {
         this.array = new double[n];
         this.vector = inputVector.vector;
         System.arraycopy(inputVector.array, 0, array, 0, n);
-}
+    }
 
     @Override
     public String toString() {
@@ -45,17 +45,39 @@ public class Vector {
         return array.length;
     }
 
-    public double get(int i) {
+    public double getComponentByIndex(int i) {
         return array[i];
     }
 
-    public void set(int i, double value) {
+    public void setComponentByIndex(int i, double value) {
         array[i] = value;
     }
 
-    public  void vectorReversal () {
-        for (int i =0; i < array.length; i++) {
+    public void vectorReversal() {
+        for (int i = 0; i < array.length; i++) {
             array[i] *= -1;
+        }
+    }
+
+    public void vectorsAdding(Vector inputVector) {
+        if (n < inputVector.n) {
+            n = inputVector.n;
+            array = Arrays.copyOf(array, n);
+        }
+
+        for (int i = 0; i < inputVector.array.length; i++) {
+            array[i] += inputVector.array[i];
+        }
+    }
+
+    public void vectorSubtraction (Vector inputVector) {
+        if (n < inputVector.n) {
+            n = inputVector.n;
+            array = Arrays.copyOf(array, n);
+        }
+
+        for (int i = 0; i < inputVector.array.length; i++) {
+            array[i] -= inputVector.array[i];
         }
     }
 }
