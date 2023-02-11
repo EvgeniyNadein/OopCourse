@@ -3,7 +3,7 @@ package vector;
 import java.util.Arrays;
 
 public class Vector {
-    private int n;
+    private final int n;
     private double[] array;
     private Vector vector;
 
@@ -60,24 +60,58 @@ public class Vector {
     }
 
     public void vectorsAdding(Vector inputVector) {
-        if (n < inputVector.n) {
-            n = inputVector.n;
-            array = Arrays.copyOf(array, n);
-        }
+        array = Arrays.copyOf(array, Math.max(n, inputVector.n));
 
         for (int i = 0; i < inputVector.array.length; i++) {
             array[i] += inputVector.array[i];
         }
     }
 
-    public void vectorSubtraction (Vector inputVector) {
-        if (n < inputVector.n) {
-            n = inputVector.n;
-            array = Arrays.copyOf(array, n);
-        }
+    public void vectorSubtraction(Vector inputVector) {
+        array = Arrays.copyOf(array, Math.max(n, inputVector.n));
 
         for (int i = 0; i < inputVector.array.length; i++) {
             array[i] -= inputVector.array[i];
         }
+    }
+
+    public static Vector twoVectorsAdding(Vector vector1, Vector vector2) {
+        Vector vector = new Vector(Math.max(vector1.getSize(), vector2.getSize()));
+
+        for (int i = 0; i < Math.min(vector1.array.length, vector2.array.length); i++) {
+            vector.array[i] = vector1.array[i] + vector2.array[i];
+        }
+
+        if (vector1.array.length < vector2.array.length) {
+            System.arraycopy(vector2.array, vector1.array.length,
+                    vector.array, vector1.array.length, vector2.array.length - vector1.array.length);
+        }
+
+        if (vector2.array.length < vector1.array.length) {
+            System.arraycopy(vector1.array, vector2.array.length,
+                    vector.array, vector2.array.length, vector1.array.length - vector2.array.length);
+        }
+
+        return vector;
+    }
+
+    public static Vector twoVectorsSubtraction(Vector vector1, Vector vector2) {
+        Vector vector = new Vector(Math.max(vector1.getSize(), vector2.getSize()));
+
+        for (int i = 0; i < Math.min(vector1.array.length, vector2.array.length); i++) {
+            vector.array[i] = vector1.array[i] - vector2.array[i];
+        }
+
+        if (vector1.array.length < vector2.array.length) {
+            System.arraycopy(vector2.array, vector1.array.length,
+                    vector.array, vector1.array.length, vector2.array.length - vector1.array.length);
+        }
+
+        if (vector2.array.length < vector1.array.length) {
+            System.arraycopy(vector1.array, vector2.array.length,
+                    vector.array, vector2.array.length, vector1.array.length - vector2.array.length);
+        }
+
+        return vector;
     }
 }

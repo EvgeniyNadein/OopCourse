@@ -47,5 +47,9 @@ public class Main {
         System.out.println("вектор 7" + vector7);
         vector5.vectorSubtraction(vector7);
         System.out.println("вектор 5 - вектор 7: " + vector5);
+        System.out.println();
+
+        System.out.println("Результат сложение двух векторов = " + Vector.twoVectorsAdding(vector1,vector4));
+        System.out.println("Результат вычитания двух векторов = " + Vector.twoVectorsSubtraction(vector4,vector1));
     }
 }
