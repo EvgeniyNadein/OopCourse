@@ -60,7 +60,7 @@ public class Vector {
     }
 
     public void vectorsAdding(Vector inputVector) {
-        array = Arrays.copyOf(array, Math.max(n, inputVector.n));
+        array = Arrays.copyOf(array, Math.max(array.length, inputVector.array.length));
 
         for (int i = 0; i < inputVector.array.length; i++) {
             array[i] += inputVector.array[i];
@@ -68,7 +68,7 @@ public class Vector {
     }
 
     public void vectorSubtraction(Vector inputVector) {
-        array = Arrays.copyOf(array, Math.max(n, inputVector.n));
+        array = Arrays.copyOf(array, Math.max(array.length, inputVector.array.length));
 
         for (int i = 0; i < inputVector.array.length; i++) {
             array[i] -= inputVector.array[i];
@@ -113,5 +113,33 @@ public class Vector {
         }
 
         return vector;
+    }
+
+    public void multiplyVectorByScalar(double scalar) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] *= scalar;
+        }
+    }
+
+    public static double vectorsProductScalar(Vector vector1, Vector vector2) {
+        double vectorsProductScalar = 0;
+
+        for (int i = 0; i < Math.min(vector1.array.length, vector2.array.length); i++) {
+            vectorsProductScalar += vector1.array[i] * vector2.array[i];
+        }
+
+        if (vector1.array.length < vector2.array.length) {
+            for (int i = vector1.array.length; i < vector2.array.length; i++) {
+                vectorsProductScalar += vector2.array[i];
+            }
+        }
+
+        if (vector1.array.length > vector2.array.length) {
+            for (int i = vector2.array.length; i < vector1.array.length; i++) {
+                vectorsProductScalar += vector1.array[i];
+            }
+        }
+
+        return vectorsProductScalar;
     }
 }

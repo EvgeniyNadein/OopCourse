@@ -49,7 +49,14 @@ public class Main {
         System.out.println("вектор 5 - вектор 7: " + vector5);
         System.out.println();
 
-        System.out.println("–езультат сложение двух векторов = " + Vector.twoVectorsAdding(vector1,vector4));
-        System.out.println("–езультат вычитани€ двух векторов = " + Vector.twoVectorsSubtraction(vector4,vector1));
+        System.out.println("–езультат сложение двух векторов = " + Vector.twoVectorsAdding(vector1, vector4));
+        System.out.println("–езультат вычитани€ двух векторов = " + Vector.twoVectorsSubtraction(vector4, vector1));
+        System.out.println();
+
+        vector7.multiplyVectorByScalar(2);
+        System.out.println("умножение вектора 7 на скал€р = " + vector7);
+        System.out.println();
+
+        System.out.println("скал€рное произведение векторов = " + Vector.vectorsProductScalar(vector7, vector5));
     }
 }
