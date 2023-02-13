@@ -59,5 +59,15 @@ public class Main {
         System.out.println();
 
         System.out.println("скалярное произведение векторов = " + Vector.vectorsProductScalar(vector7, vector5));
+        System.out.println();
+
+        System.out.println(vector1.equals(vector2));
+        double[] inputArray4 = {2, 4};
+        Vector vector8 = new Vector(inputArray4);
+        Vector vector9 = new Vector(inputArray4);
+        System.out.println(vector7);
+        System.out.println(vector8.equals(vector7));
+        System.out.println(vector9.equals(vector7));
+        System.out.println(vector7.equals(vector8));
     }
 }

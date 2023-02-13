@@ -142,4 +142,42 @@ public class Vector {
 
         return vectorsProductScalar;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+
+        if (o == null || o.getClass() != getClass()) {
+            return false;
+        }
+
+        Vector vector = (Vector) o;
+
+        boolean a = false;
+        boolean b = true;
+
+        if (n == vector.n) {
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] != vector.array[i]) {
+                    b = false;
+                    break;
+                }
+            }
+
+            a = true;
+        }
+
+        return a && b;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 37;
+        int hash = 1;
+        hash = prime * hash + n;
+        hash = prime * hash + Arrays.hashCode(array);
+        return hash;
+    }
 }
