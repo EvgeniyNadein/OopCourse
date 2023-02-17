@@ -110,40 +110,39 @@ public class Triangle implements Shape {
         return Math.max(Math.max(y1, y2), y3) - Math.min(Math.min(y1, y2), y3);
     }
 
-    public double getSideABLength() {
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    public double getSideLength(double x1Coordinates, double x2Coordinates, double y1Coordinates, double y2Coordinates) {
+        return Math.sqrt(Math.pow(x2Coordinates - x1Coordinates, 2) + Math.pow(y2Coordinates - y1Coordinates, 2));
     }
 
-    public double getSideACLength() {
-        return Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2));
-    }
+    public boolean isLine() {
+        double epsilon = 1.0e-10;
 
-    public double getSideBCLength() {
-        return Math.sqrt(Math.pow(x2 - x3, 2) + Math.pow(y2 - y3, 2));
+        return Math.abs((x1 - x3) * (y2 - y3) - (x2 - x3) * (y1 - y3)) <= epsilon;
     }
 
     @Override
     public double getArea() {
-        double epsilon = 1.0e-10;
-
-        if (Math.abs((x1 - x3) * (y2 - y3) - (x2 - x3) * (y1 - y3)) <= epsilon) {
+        if (isLine()) {
             return 0;
         }
 
-        double triangleSemiPerimeter = (getSideABLength() + getSideACLength() + getSideBCLength()) / 2;
+        double sideABLength = getSideLength(x1, x2, y1, y2);
+        double sideACLength = getSideLength(x1, x3, y1, y3);
+        double sideBCLength = getSideLength(x3, x2, y3, y2);
 
-        return Math.sqrt(triangleSemiPerimeter * (triangleSemiPerimeter - getSideABLength())
-                * (triangleSemiPerimeter - getSideACLength()) * (triangleSemiPerimeter - getSideBCLength()));
+        double triangleSemiPerimeter = (sideABLength + sideACLength + sideBCLength) / 2;
+
+        return Math.sqrt(triangleSemiPerimeter * (triangleSemiPerimeter - sideABLength)
+                * (triangleSemiPerimeter - sideACLength)
+                * (triangleSemiPerimeter - sideBCLength));
     }
 
     @Override
     public double getPerimeter() {
-        double epsilon = 1.0e-10;
-
-        if (Math.abs((x1 - x3) * (y2 - y3) - (x2 - x3) * (y1 - y3)) <= epsilon) {
+        if (isLine()) {
             return 0;
         }
 
-        return getSideABLength() + getSideACLength() + getSideBCLength();
+        return getSideLength(x1, x2, y1, y2) + getSideLength(x1, x3, y1, y3) + getSideLength(x3, x2, y3, y2);
     }
 }
