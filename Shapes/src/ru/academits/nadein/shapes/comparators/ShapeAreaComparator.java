@@ -1,6 +1,6 @@
-package ru.academits.nadein.shapes.comparators.shape_area_comparator;
+package ru.academits.nadein.shapes.comparators;
 
-import ru.academits.nadein.shapes.shapes.shape.Shape;
+import ru.academits.nadein.shapes.shapes.Shape;
 
 import java.util.Comparator;
 

@@ -1,4 +1,4 @@
-package ru.academits.nadein.shapes.shapes.shape;
+package ru.academits.nadein.shapes.shapes;
 
 public interface Shape {
     double getWidth();
