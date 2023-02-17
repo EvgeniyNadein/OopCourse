@@ -1,6 +1,4 @@
-package ru.academits.nadein.shapes.shapes.triangle;
-
-import ru.academits.nadein.shapes.shapes.shape.Shape;
+package ru.academits.nadein.shapes.shapes;
 
 public class Triangle implements Shape {
     private double x1;

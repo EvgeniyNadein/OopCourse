@@ -1,6 +1,4 @@
-package ru.academits.nadein.shapes.shapes.rectangle;
-
-import ru.academits.nadein.shapes.shapes.shape.Shape;
+package ru.academits.nadein.shapes.shapes;
 
 public class Rectangle implements Shape {
     private double height;

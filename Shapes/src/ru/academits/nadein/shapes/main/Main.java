@@ -1,12 +1,12 @@
 package ru.academits.nadein.shapes.main;
 
-import ru.academits.nadein.shapes.shapes.circle.Circle;
-import ru.academits.nadein.shapes.comparators.shape_area_comparator.ShapeAreaComparator;
-import ru.academits.nadein.shapes.comparators.shape_perimeter_comparator.ShapePerimeterComparator;
-import ru.academits.nadein.shapes.shapes.rectangle.Rectangle;
-import ru.academits.nadein.shapes.shapes.shape.Shape;
-import ru.academits.nadein.shapes.shapes.triangle.Triangle;
-import ru.academits.nadein.shapes.shapes.square.Square;
+import ru.academits.nadein.shapes.shapes.Circle;
+import ru.academits.nadein.shapes.comparators.ShapeAreaComparator;
+import ru.academits.nadein.shapes.comparators.ShapePerimeterComparator;
+import ru.academits.nadein.shapes.shapes.Rectangle;
+import ru.academits.nadein.shapes.shapes.Shape;
+import ru.academits.nadein.shapes.shapes.Triangle;
+import ru.academits.nadein.shapes.shapes.Square;
 
 import java.util.Arrays;
 

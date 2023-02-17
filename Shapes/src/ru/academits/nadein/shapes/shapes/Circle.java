@@ -1,6 +1,4 @@
-package ru.academits.nadein.shapes.shapes.circle;
-
-import ru.academits.nadein.shapes.shapes.shape.Shape;
+package ru.academits.nadein.shapes.shapes;
 
 public class Circle implements Shape {
     private double radius;

@@ -1,6 +1,4 @@
-package ru.academits.nadein.shapes.shapes.square;
-
-import ru.academits.nadein.shapes.shapes.shape.Shape;
+package ru.academits.nadein.shapes.shapes;
 
 public class Square implements Shape {
     private double sideLength;
