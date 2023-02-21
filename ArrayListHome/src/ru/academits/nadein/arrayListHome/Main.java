@@ -47,7 +47,6 @@ public class Main {
         ArrayList<Integer> integers2WithoutRepeat = new ArrayList<>(integers2);
 
         for (int i = 0; i < integers2WithoutRepeat.size(); i++) {
-
             if (integers2WithoutRepeat.lastIndexOf(integers2WithoutRepeat.get(i)) > i) {
                 integers2WithoutRepeat.remove(integers2WithoutRepeat.lastIndexOf(integers2WithoutRepeat.get(i)));
                 i -= 1;
