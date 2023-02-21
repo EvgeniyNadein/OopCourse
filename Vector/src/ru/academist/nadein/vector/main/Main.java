@@ -1,6 +1,6 @@
-package main;
+package ru.academist.nadein.vector.main;
 
-import vector.Vector;
+import ru.academist.nadein.vector.vector.Vector;
 
 public class Main {
 

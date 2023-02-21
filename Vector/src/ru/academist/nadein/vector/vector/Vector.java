@@ -1,4 +1,4 @@
-package vector;
+package ru.academist.nadein.vector.vector;
 
 import java.util.Arrays;
 
