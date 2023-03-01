@@ -108,11 +108,11 @@ public class Triangle implements Shape {
         return Math.max(Math.max(y1, y2), y3) - Math.min(Math.min(y1, y2), y3);
     }
 
-    public double getSideLength(double x1Coordinates, double x2Coordinates, double y1Coordinates, double y2Coordinates) {
-        return Math.sqrt(Math.pow(x2Coordinates - x1Coordinates, 2) + Math.pow(y2Coordinates - y1Coordinates, 2));
+    private static double getSideLength(double x1, double y1, double x2, double y2) {
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
-    public boolean isLine() {
+    private boolean isLine() {
         double epsilon = 1.0e-10;
 
         return Math.abs((x1 - x3) * (y2 - y3) - (x2 - x3) * (y1 - y3)) <= epsilon;
@@ -124,9 +124,9 @@ public class Triangle implements Shape {
             return 0;
         }
 
-        double sideABLength = getSideLength(x1, x2, y1, y2);
-        double sideACLength = getSideLength(x1, x3, y1, y3);
-        double sideBCLength = getSideLength(x3, x2, y3, y2);
+        double sideABLength = getSideLength(x1, y1, x2, y2);
+        double sideACLength = getSideLength(x1, y1, x3, y3);
+        double sideBCLength = getSideLength(x3, y3, x2, y2);
 
         double triangleSemiPerimeter = (sideABLength + sideACLength + sideBCLength) / 2;
 
@@ -137,10 +137,6 @@ public class Triangle implements Shape {
 
     @Override
     public double getPerimeter() {
-        if (isLine()) {
-            return 0;
-        }
-
-        return getSideLength(x1, x2, y1, y2) + getSideLength(x1, x3, y1, y3) + getSideLength(x3, x2, y3, y2);
+        return getSideLength(x1, y1, x2, y2) + getSideLength(x1, y1, x3, y3) + getSideLength(x3, y3, x2, y2);
     }
 }
