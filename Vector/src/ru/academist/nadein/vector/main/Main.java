@@ -3,7 +3,6 @@ package ru.academist.nadein.vector.main;
 import ru.academist.nadein.vector.vector.Vector;
 
 public class Main {
-
     public static void main(String[] args) {
         double[] inputArray1 = {1, 4};
         Vector vector1 = new Vector(inputArray1);
@@ -23,7 +22,7 @@ public class Main {
 
         Vector vector4 = new Vector(5, inputArray1);
         System.out.println("вектор 4: " + vector4);
-        vector4.vectorReversal();
+        vector4.deploy();
         System.out.println("вектор 4: " + vector4);
         System.out.println();
 
@@ -34,31 +33,31 @@ public class Main {
         Vector vector7 = new Vector(inputArray3);
         System.out.println("вектор 5" + vector5);
         System.out.println("вектор 6" + vector6);
-        vector5.vectorsAdding(vector6);
+        vector5.add(vector6);
         System.out.println("вектор 5 + вектор 6: " + vector5);
         System.out.println();
 
         System.out.println("вектор 5" + vector5);
         System.out.println("вектор 7" + vector7);
-        vector5.vectorsAdding(vector7);
+        vector5.add(vector7);
         System.out.println("вектор 5 + вектор 7: " + vector5);
         System.out.println();
 
         System.out.println("вектор 7" + vector7);
-        vector5.vectorSubtraction(vector7);
+        vector5.subtract(vector7);
         System.out.println("вектор 5 - вектор 7: " + vector5);
         System.out.println();
 
-        System.out.println("–езультат сложение двух векторов = " + Vector.twoVectorsAdding(vector1, vector4));
-        System.out.println("–езультат вычитани€ двух векторов = " + Vector.twoVectorsSubtraction(vector4, vector1));
+        System.out.println("–езультат сложение двух векторов = " + Vector.getSum(vector1, vector4));
+        System.out.println("–езультат вычитани€ двух векторов = " + Vector.getDifference(vector4, vector1));
         System.out.println();
 
         double scalar = 2;
-        vector7.multiplyVectorByScalar(scalar);
+        vector7.multiplyByScalar(scalar);
         System.out.println("умножение вектора 7 на скал€р " + scalar + " = " + vector7);
         System.out.println();
 
-        System.out.println("скал€рное произведение векторов = " + Vector.vectorsProductScalar(vector7, vector5));
+        System.out.println("скал€рное произведение векторов = " + Vector.getScalarProduct(vector7, vector5));
         System.out.println();
 
         System.out.println(vector1.equals(vector2));
