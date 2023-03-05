@@ -138,4 +138,13 @@ public class Vector {
     }
 
     //реализовать метод вычисления длины вектора (длины отрезка в пространстве)
+    public static double getLength(Vector vector) {
+        double length = 0;
+
+        for (int i = 0; i < vector.vectorComponents.length; i++) {
+            length += vector.vectorComponents[i] * vector.vectorComponents[i];
+        }
+
+        return length;
+    }
 }

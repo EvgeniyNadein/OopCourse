@@ -68,5 +68,9 @@ public class Main {
         System.out.println(vector8.equals(vector7));
         System.out.println(vector9.equals(vector7));
         System.out.println(vector7.equals(vector8));
+        System.out.println();
+
+        System.out.println(Vector.getLength(vector7));
+
     }
 }
