@@ -32,7 +32,18 @@ public class Vector {
 
     @Override
     public String toString() {
-        return Arrays.toString(vectorComponents);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{");
+
+        for (int i = 0; i < vectorComponents.length; i++) {
+           stringBuilder.append(getComponentByIndex(i));
+           stringBuilder.append(", ");
+        }
+
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        stringBuilder.append("}");
+
+        return stringBuilder.toString();
     }
 
     public int getSize() {
