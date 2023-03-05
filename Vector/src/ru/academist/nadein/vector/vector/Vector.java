@@ -36,8 +36,8 @@ public class Vector {
         stringBuilder.append("{");
 
         for (int i = 0; i < vectorComponents.length; i++) {
-           stringBuilder.append(getComponentByIndex(i));
-           stringBuilder.append(", ");
+            stringBuilder.append(getComponentByIndex(i));
+            stringBuilder.append(", ");
         }
 
         stringBuilder.deleteCharAt(stringBuilder.length() - 1);
