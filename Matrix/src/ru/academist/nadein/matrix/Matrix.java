@@ -93,4 +93,60 @@ public class Matrix {
 
         return stringBuilder.toString();
     }
+
+    public int getRowsCount() {
+        return matrix.length;
+    }
+
+    public int getColumnsCount() {
+        return matrix[0].getSize();
+    }
+
+    public Vector getVectorRowByIndex(int index) {
+        if (index < 0 || index > matrix.length) {
+            throw new IllegalArgumentException("Индекс выходит за границы матрицы");
+        }
+
+        return matrix[index];
+    }
+
+    public void setVectorRowByIndex(int index, Vector vector) {
+        if (index < 0 || index > matrix.length) {
+            throw new IllegalArgumentException("Индекс выходит за границы матрицы");
+        }
+
+        matrix[index] = vector;
+    }
+
+    public Vector getVectorColumnByIndex(int index) {
+        if (index < 0 || index > matrix[0].getSize()) {
+            throw new IllegalArgumentException("Индекс выходит за границы матрицы");
+        }
+
+        Vector vector = new Vector(matrix.length);
+
+        for (int i = 0; i < matrix.length; i++) {
+            vector.setComponentByIndex(i, matrix[i].getComponentByIndex(index));
+        }
+
+        return vector;
+    }
+
+    public void multiplyByScalar(double scalar) {
+        for (Vector vector : matrix) {
+            vector.multiplyByScalar(scalar);
+        }
+    }
+
+    public void add(Matrix matrix) {
+        for (int i = 0; i < Math.min(this.matrix.length, matrix.matrix.length); i++) {
+            this.matrix[i].add(matrix.matrix[i]);
+        }
+    }
+
+    public void subtract(Matrix matrix) {
+        for (int i = 0; i < Math.min(this.matrix.length, matrix.matrix.length); i++) {
+            this.matrix[i].subtract(matrix.matrix[i]);
+        }
+    }
 }
