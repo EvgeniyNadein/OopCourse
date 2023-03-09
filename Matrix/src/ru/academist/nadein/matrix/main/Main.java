@@ -27,5 +27,11 @@ public class Main {
         System.out.println("Вычитание матриц: " + matrix2);
         matrix1.multiplyByScalar(3);
         System.out.println("Умножение матрицы на скаляр: " + matrix1);
+        System.out.println();
+
+        System.out.println("Сложение матриц: " + Matrix.getSum(matrix1, matrix2));
+        System.out.println(matrix1);
+        System.out.println("Вычитание матриц: " + Matrix.getDifference(matrix2, matrix1));
+        System.out.println(matrix2);
     }
 }

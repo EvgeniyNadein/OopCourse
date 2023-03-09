@@ -5,7 +5,7 @@ import ru.academist.nadein.vector.vector.Vector;
 import java.util.Arrays;
 
 public class Matrix {
-    private Vector[] matrix;
+    private final Vector[] matrix;
 
     public Matrix(int rows, int columns) {
         if (rows <= 0 || columns <= 0) {
@@ -22,7 +22,7 @@ public class Matrix {
 
     public Matrix(double[][] twoDimensionalArray) {
         if (twoDimensionalArray.length == 0) {
-            throw new NullPointerException("Двумерный массив не содержит элементов");
+            throw new IllegalArgumentException("Двумерный массив не содержит элементов");
         }
 
         matrix = new Vector[twoDimensionalArray.length];
@@ -40,7 +40,7 @@ public class Matrix {
 
     public Matrix(Vector[] vector) {
         if (vector.length == 0) {
-            throw new NullPointerException("Массив не содержит элементов");
+            throw new IllegalArgumentException("Массив не содержит элементов");
         }
 
         int maxLength = 0;
@@ -72,7 +72,7 @@ public class Matrix {
 
     public Matrix(Matrix matrix) {
         if (matrix.matrix.length == 0) {
-            throw new NullPointerException("Матрица не содержит элементов");
+            throw new IllegalArgumentException("Матрица не содержит элементов");
         }
 
         this.matrix = Arrays.copyOf(matrix.matrix, matrix.matrix.length);
@@ -139,14 +139,70 @@ public class Matrix {
     }
 
     public void add(Matrix matrix) {
-        for (int i = 0; i < Math.min(this.matrix.length, matrix.matrix.length); i++) {
+        if (this.matrix.length != matrix.matrix.length) {
+            throw new IllegalArgumentException("Количество строк матриц не равны");
+        }
+
+        if (this.matrix[0].getSize() != matrix.matrix[0].getSize()) {
+            throw new IllegalArgumentException("Количество столбцов матриц не равны");
+        }
+
+        for (int i = 0; i < this.matrix.length; i++) {
             this.matrix[i].add(matrix.matrix[i]);
         }
     }
 
     public void subtract(Matrix matrix) {
-        for (int i = 0; i < Math.min(this.matrix.length, matrix.matrix.length); i++) {
+        if (this.matrix.length != matrix.matrix.length) {
+            throw new IllegalArgumentException("Количество строк матриц не равны");
+        }
+
+        if (this.matrix[0].getSize() != matrix.matrix[0].getSize()) {
+            throw new IllegalArgumentException("Количество столбцов матриц не равны");
+        }
+
+        for (int i = 0; i < this.matrix.length; i++) {
             this.matrix[i].subtract(matrix.matrix[i]);
         }
+    }
+
+    public static Matrix getSum(Matrix matrix1, Matrix matrix2) {
+        if (matrix1.matrix.length != matrix2.matrix.length) {
+            throw new IllegalArgumentException("Количество строк матриц не равны");
+        }
+
+        if (matrix1.matrix[0].getSize() != matrix2.matrix[0].getSize()) {
+            throw new IllegalArgumentException("Количество столбцов матриц не равны");
+        }
+
+        Matrix matrix = new Matrix(matrix1.matrix.length, matrix1.matrix[0].getSize());
+
+        for (int i = 0; i < matrix1.matrix.length; i++) {
+            for (int j = 0; j < matrix1.matrix[0].getSize(); j++) {
+               matrix.matrix[i].setComponentByIndex(j, matrix1.matrix[i].getComponentByIndex(j) + matrix2.matrix[i].getComponentByIndex(j));
+            }
+        }
+
+        return matrix;
+    }
+
+    public static Matrix getDifference(Matrix matrix1, Matrix matrix2) {
+        if (matrix1.matrix.length != matrix2.matrix.length) {
+            throw new IllegalArgumentException("Количество строк матриц не равны");
+        }
+
+        if (matrix1.matrix[0].getSize() != matrix2.matrix[0].getSize()) {
+            throw new IllegalArgumentException("Количество столбцов матриц не равны");
+        }
+
+        Matrix matrix = new Matrix(matrix1.matrix.length, matrix1.matrix[0].getSize());
+
+        for (int i = 0; i < matrix1.matrix.length; i++) {
+            for (int j = 0; j < matrix1.matrix[0].getSize(); j++) {
+                matrix.matrix[i].setComponentByIndex(j, matrix1.matrix[i].getComponentByIndex(j) - matrix2.matrix[i].getComponentByIndex(j));
+            }
+        }
+
+        return matrix;
     }
 }

@@ -85,16 +85,20 @@ public class Vector {
 
     public static Vector getSum(Vector vector1, Vector vector2) {
         Vector vector = new Vector(Math.max(vector1.getSize(), vector2.getSize()));
-        vector1.add(vector2);
-        vector.vectorComponents = Arrays.copyOf(vector1.vectorComponents, vector1.vectorComponents.length);
+
+        for (int i = 0; i < vector.getSize(); i++) {
+            vector.setComponentByIndex(i, vector1.getComponentByIndex(i) + vector.getComponentByIndex(i));
+        }
 
         return vector;
     }
 
     public static Vector getDifference(Vector vector1, Vector vector2) {
         Vector vector = new Vector(Math.max(vector1.getSize(), vector2.getSize()));
-        vector1.subtract(vector2);
-        vector.vectorComponents = Arrays.copyOf(vector1.vectorComponents, vector1.vectorComponents.length);
+
+        for (int i = 0; i < vector.getSize(); i++) {
+            vector.setComponentByIndex(i, vector1.getComponentByIndex(i) - vector.getComponentByIndex(i));
+        }
 
         return vector;
     }
