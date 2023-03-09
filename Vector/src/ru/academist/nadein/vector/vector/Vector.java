@@ -113,7 +113,7 @@ public class Vector {
         double scalarProduct = 0;
 
         for (int i = 0; i < Math.min(vector1.vectorComponents.length, vector2.vectorComponents.length); i++) {
-            scalarProduct += vector1.vectorComponents[i] * vector2.vectorComponents[i];
+            scalarProduct += vector1.getComponentByIndex(i) * vector2.getComponentByIndex(i);
         }
 
         return scalarProduct;
