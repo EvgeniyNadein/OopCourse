@@ -13,13 +13,17 @@ public class Main {
         Vector vector2 = new Vector(inputArray2);
         Vector[] array = {vector1, vector2};
         Matrix matrix1 = new Matrix(array);
-        Matrix matrix2 = new Matrix(array);
+        Matrix matrix2 = new Matrix(matrix1);
 
         System.out.println(matrix1);
         System.out.println(matrix2);
         System.out.println();
 
-        System.out.println(matrix2.getVectorColumnByIndex(1));
+        System.out.println("Колонка матрицы2 по индексу: " + matrix2.getVectorColumnByIndex(1));
+        System.out.println("Строка матрицы2 по индексу: " + matrix2.getVectorRowByIndex(1));
+        System.out.println("Количество строк матрицы2: " + matrix2.getRowsCount());
+        System.out.println("Количество колонок матрицы2: " + matrix2.getColumnsCount());
+        System.out.println();
 
         matrix2.add(matrix1);
         System.out.println("Сложение матриц: " + matrix2);

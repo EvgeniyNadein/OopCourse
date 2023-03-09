@@ -74,8 +74,11 @@ public class Matrix {
         if (matrix.matrix.length == 0) {
             throw new IllegalArgumentException("Матрица не содержит элементов");
         }
+        this.matrix = new Vector[matrix.matrix.length];
 
-        this.matrix = Arrays.copyOf(matrix.matrix, matrix.matrix.length);
+        for (int i = 0; i < matrix.matrix.length; i++) {
+            this.matrix[i] = new Vector(matrix.matrix[i]);
+        }
     }
 
     public String toString() {
@@ -179,7 +182,7 @@ public class Matrix {
 
         for (int i = 0; i < matrix1.matrix.length; i++) {
             for (int j = 0; j < matrix1.matrix[0].getSize(); j++) {
-               matrix.matrix[i].setComponentByIndex(j, matrix1.matrix[i].getComponentByIndex(j) + matrix2.matrix[i].getComponentByIndex(j));
+                matrix.matrix[i].setComponentByIndex(j, matrix1.matrix[i].getComponentByIndex(j) + matrix2.matrix[i].getComponentByIndex(j));
             }
         }
 
