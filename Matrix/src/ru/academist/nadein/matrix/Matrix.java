@@ -223,8 +223,6 @@ public class Matrix {
                     resultingMatrix.matrix[i].setComponentByIndex(j, resultingComponent);
                     resultingComponent = 0;
                 }
-
-                resultingComponent = 0;
             }
 
             return resultingMatrix;
