@@ -1,6 +1,6 @@
 package ru.academist.nadein.matrix;
 
-import ru.academist.nadein.vector.vector.Vector;
+import ru.academist.nadein.vector.Vector;
 
 import java.util.Arrays;
 
