@@ -91,7 +91,7 @@ public class Vector {
     }
 
     public static Vector getSum(Vector vector1, Vector vector2) {
-        Vector resultingVector = new Vector(Math.max(vector1.getSize(), vector2.getSize()));
+        Vector resultingVector = new Vector(Math.max(vector1.components.length, vector2.components.length));
 
         for (int i = 0; i < resultingVector.components.length; i++) {
             resultingVector.components[i] = vector1.components[i] + vector2.components[i];
