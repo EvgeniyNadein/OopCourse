@@ -178,15 +178,15 @@ public class Matrix {
             throw new IllegalArgumentException("Количество столбцов матриц не равны");
         }
 
-        Matrix matrix = new Matrix(matrix1.matrix.length, matrix1.matrix[0].getSize());
+        Matrix resultingMatrix = new Matrix(matrix1.matrix.length, matrix1.matrix[0].getSize());
 
         for (int i = 0; i < matrix1.matrix.length; i++) {
             for (int j = 0; j < matrix1.matrix[0].getSize(); j++) {
-                matrix.matrix[i].setComponentByIndex(j, matrix1.matrix[i].getComponentByIndex(j) + matrix2.matrix[i].getComponentByIndex(j));
+                resultingMatrix.matrix[i].setComponentByIndex(j, matrix1.matrix[i].getComponentByIndex(j) + matrix2.matrix[i].getComponentByIndex(j));
             }
         }
 
-        return matrix;
+        return resultingMatrix;
     }
 
     public static Matrix getDifference(Matrix matrix1, Matrix matrix2) {
@@ -198,14 +198,38 @@ public class Matrix {
             throw new IllegalArgumentException("Количество столбцов матриц не равны");
         }
 
-        Matrix matrix = new Matrix(matrix1.matrix.length, matrix1.matrix[0].getSize());
+        Matrix resultingMatrix = new Matrix(matrix1.matrix.length, matrix1.matrix[0].getSize());
 
         for (int i = 0; i < matrix1.matrix.length; i++) {
             for (int j = 0; j < matrix1.matrix[0].getSize(); j++) {
-                matrix.matrix[i].setComponentByIndex(j, matrix1.matrix[i].getComponentByIndex(j) - matrix2.matrix[i].getComponentByIndex(j));
+                resultingMatrix.matrix[i].setComponentByIndex(j, matrix1.matrix[i].getComponentByIndex(j) - matrix2.matrix[i].getComponentByIndex(j));
             }
         }
 
-        return matrix;
+        return resultingMatrix;
+    }
+
+    public static Matrix multiplyMatrix(Matrix matrix1, Matrix matrix2) {
+        if (matrix1.matrix[0].getSize() == matrix2.matrix.length) {
+            Matrix resultingMatrix = new Matrix(matrix1.matrix.length, matrix2.matrix[0].getSize());
+            double resultingComponent = 0;
+
+            for (int i = 0; i < matrix1.matrix.length; i++) {
+                for (int j = 0; j < matrix1.matrix.length; j++) {
+                    for (int k = 0; k < matrix1.matrix[0].getSize(); k++) {
+                        resultingComponent += matrix1.matrix[i].getComponentByIndex(k) * matrix2.getVectorColumnByIndex(j).getComponentByIndex(k);
+                    }
+
+                    resultingMatrix.matrix[i].setComponentByIndex(j, resultingComponent);
+                    resultingComponent = 0;
+                }
+
+                resultingComponent = 0;
+            }
+
+            return resultingMatrix;
+        } else {
+            throw new IllegalArgumentException("Количество столбцов первой матрицы должно быть ровно количеству строк второй матрицы");
+        }
     }
 }

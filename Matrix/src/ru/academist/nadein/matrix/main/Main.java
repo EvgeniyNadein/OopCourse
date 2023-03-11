@@ -35,5 +35,14 @@ public class Main {
         System.out.println(matrix1);
         System.out.println("Вычитание матриц: " + Matrix.getDifference(matrix2, matrix1));
         System.out.println(matrix2);
+        System.out.println();
+
+        double[][] inputArray3 = {{1, 2, 2}, {3, 1, 1}};
+        double[][] inputArray4 = {{4, 2}, {3, 1}, {1, 5}};
+        Matrix matrix3 = new Matrix(inputArray3);
+        Matrix matrix4 = new Matrix(inputArray4);
+        System.out.println(matrix3);
+        System.out.println(matrix4);
+        System.out.println("Умножение матриц: " + Matrix.multiplyMatrix(matrix3, matrix4));
     }
 }
