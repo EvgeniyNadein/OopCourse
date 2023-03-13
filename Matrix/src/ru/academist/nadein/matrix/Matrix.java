@@ -84,7 +84,7 @@ public class Matrix {
             stringBuilder.append(", ");
         }
 
-        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1 );
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1);
         stringBuilder.append("}");
 
         return stringBuilder.toString();
@@ -214,4 +214,5 @@ public class Matrix {
         }
 
         return resultingMatrix;
-    }}
+    }
+}
