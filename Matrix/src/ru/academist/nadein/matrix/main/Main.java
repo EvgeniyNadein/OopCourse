@@ -43,6 +43,6 @@ public class Main {
         Matrix matrix4 = new Matrix(inputArray4);
         System.out.println(matrix3);
         System.out.println(matrix4);
-        System.out.println("Умножение матриц: " + Matrix.getProduct(matrix3, matrix4));
+        System.out.println("Умножение матриц: " + Matrix.getProduct(matrix4, matrix3));
     }
 }
