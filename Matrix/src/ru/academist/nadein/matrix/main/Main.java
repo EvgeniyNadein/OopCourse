@@ -17,8 +17,8 @@ public class Main {
         System.out.println(matrix2);
         System.out.println();
 
-        System.out.println("Колонка матрицы2 по индексу: " + matrix2.getVectorColumnByIndex(1));
-        System.out.println("Строка матрицы2 по индексу: " + matrix2.getVectorRowByIndex(1));
+        System.out.println("Колонка матрицы2 по индексу: " + matrix2.getColumnByIndex(1));
+        System.out.println("Строка матрицы2 по индексу: " + matrix2.getRowByIndex(1));
         System.out.println("Количество строк матрицы2: " + matrix2.getRowsCount());
         System.out.println("Количество колонок матрицы2: " + matrix2.getColumnsCount());
         System.out.println();
@@ -43,6 +43,6 @@ public class Main {
         Matrix matrix4 = new Matrix(inputArray4);
         System.out.println(matrix3);
         System.out.println(matrix4);
-        System.out.println("Умножение матриц: " + Matrix.multiplyMatrix(matrix3, matrix4));
+        System.out.println("Умножение матриц: " + Matrix.getProduct(matrix3, matrix4));
     }
 }

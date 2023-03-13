@@ -47,8 +47,7 @@ public class Vector {
             stringBuilder.append(", ");
         }
 
-        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1 );
         stringBuilder.append("}");
 
         return stringBuilder.toString();
@@ -93,7 +92,7 @@ public class Vector {
     public static Vector getSum(Vector vector1, Vector vector2) {
         Vector resultingVector = new Vector(Math.max(vector1.components.length, vector2.components.length));
 
-        for (int i = 0; i < resultingVector.components.length; i++) {
+        for (int i = 0; i < Math.min(vector1.components.length, vector2.components.length); i++) {
             resultingVector.components[i] = vector1.components[i] + vector2.components[i];
         }
 
@@ -103,8 +102,8 @@ public class Vector {
     public static Vector getDifference(Vector vector1, Vector vector2) {
         Vector resultingVector = new Vector(Math.max(vector1.components.length, vector2.components.length));
 
-        for (int i = 0; i < resultingVector.getSize(); i++) {
-            resultingVector.components[i] = vector1.components[i] + vector2.components[i];
+        for (int i = 0; i < Math.min(vector1.components.length, vector2.components.length); i++) {
+            resultingVector.components[i] = vector1.components[i] - vector2.components[i];
         }
 
         return resultingVector;
