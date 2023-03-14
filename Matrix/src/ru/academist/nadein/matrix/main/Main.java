@@ -37,12 +37,24 @@ public class Main {
         System.out.println(matrix2);
         System.out.println();
 
-        double[][] inputArray3 = {{1, 2, 2}, {3, 1, 1}};
-        double[][] inputArray4 = {{4, 2}, {3, 1}, {1, 5}};
+        double[][] inputArray3 = {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 0}};
+        double[][] inputArray4 = {{1, 2, 3}, {1, 1, 1}, {0, 0, 0}, {2, 1, 0}};
         Matrix matrix3 = new Matrix(inputArray3);
         Matrix matrix4 = new Matrix(inputArray4);
         System.out.println(matrix3);
         System.out.println(matrix4);
-        System.out.println("Умножение матриц: " + Matrix.getProduct(matrix4, matrix3));
+        System.out.println("Умножение матриц: " + Matrix.getProduct(matrix3, matrix4));
+        System.out.println();
+
+        double[][] inputArray5 = {{1, 2, 2}, {3, 1, 1}};
+        double[][] inputArray6 = {{4, 2}, {3, 1}, {1, 5}};
+        Matrix matrix5 = new Matrix(inputArray5);
+        Matrix matrix6 = new Matrix(inputArray6);
+        System.out.println(matrix5);
+        System.out.println(matrix6);
+        System.out.println("Умножение матриц: " + Matrix.getProduct(matrix6, matrix5));
+        System.out.println();
+
+        System.out.println("Транспонирование матрицы: " + matrix6.transpose());
     }
 }

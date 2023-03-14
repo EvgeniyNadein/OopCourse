@@ -84,7 +84,7 @@ public class Matrix {
             stringBuilder.append(", ");
         }
 
-        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1);
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         stringBuilder.append("}");
 
         return stringBuilder.toString();
@@ -201,7 +201,6 @@ public class Matrix {
 
         Matrix resultingMatrix = new Matrix(matrix1.matrixRows.length, matrix2.matrixRows[0].getSize());
 
-
         for (int i = 0; i < matrix1.matrixRows.length; i++) {
             for (int j = 0; j < matrix1.matrixRows.length; j++) {
                 double resultingComponent = 0;
@@ -210,6 +209,19 @@ public class Matrix {
                 }
 
                 resultingMatrix.matrixRows[i].setComponentByIndex(j, resultingComponent);
+            }
+        }
+
+        return resultingMatrix;
+    }
+
+    // Транспонирование матрицы
+    public Matrix transpose() {
+        Matrix resultingMatrix = new Matrix(matrixRows[0].getSize(), matrixRows.length);
+
+        for (int i = 0; i < matrixRows.length; i++) {
+            for (int j = 0; j < matrixRows[0].getSize(); j++) {
+                resultingMatrix.matrixRows[j].setComponentByIndex(i, matrixRows[i].getComponentByIndex(j));
             }
         }
 

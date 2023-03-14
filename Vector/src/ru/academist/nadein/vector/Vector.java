@@ -47,7 +47,7 @@ public class Vector {
             stringBuilder.append(", ");
         }
 
-        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1 );
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         stringBuilder.append("}");
 
         return stringBuilder.toString();
