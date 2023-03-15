@@ -55,6 +55,11 @@ public class Main {
         System.out.println("Умножение матриц: " + Matrix.getProduct(matrix6, matrix5));
         System.out.println();
 
-        System.out.println("Транспонирование матрицы: " + matrix6.transpose());
+        matrix6.transpose();
+        System.out.println("Транспонирование матрицы: " + matrix6);
+        System.out.println();
+
+        System.out.println(vector2);
+        System.out.println(matrix6.multiplyByVector(vector2));
     }
 }

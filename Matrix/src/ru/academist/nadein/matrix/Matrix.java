@@ -173,7 +173,8 @@ public class Matrix {
 
         for (int i = 0; i < matrix1.matrixRows.length; i++) {
             for (int j = 0; j < matrix1.matrixRows[0].getSize(); j++) {
-                resultingMatrix.matrixRows[i].setComponentByIndex(j, resultingMatrix.matrixRows[i].getComponentByIndex(j) + matrix2.matrixRows[i].getComponentByIndex(j));
+                resultingMatrix.matrixRows[i].setComponentByIndex(j, resultingMatrix.matrixRows[i].getComponentByIndex(j)
+                        + matrix2.matrixRows[i].getComponentByIndex(j));
             }
         }
 
@@ -187,7 +188,8 @@ public class Matrix {
 
         for (int i = 0; i < matrix1.matrixRows.length; i++) {
             for (int j = 0; j < matrix1.matrixRows[0].getSize(); j++) {
-                resultingMatrix.matrixRows[i].setComponentByIndex(j, resultingMatrix.matrixRows[i].getComponentByIndex(j) - matrix2.matrixRows[i].getComponentByIndex(j));
+                resultingMatrix.matrixRows[i].setComponentByIndex(j, resultingMatrix.matrixRows[i].getComponentByIndex(j)
+                        - matrix2.matrixRows[i].getComponentByIndex(j));
             }
         }
 
@@ -216,13 +218,31 @@ public class Matrix {
     }
 
     // Транспонирование матрицы
-    public Matrix transpose() {
+    public void transpose() {
         Matrix resultingMatrix = new Matrix(matrixRows[0].getSize(), matrixRows.length);
 
         for (int i = 0; i < matrixRows.length; i++) {
             for (int j = 0; j < matrixRows[0].getSize(); j++) {
                 resultingMatrix.matrixRows[j].setComponentByIndex(i, matrixRows[i].getComponentByIndex(j));
             }
+        }
+
+        this.matrixRows = resultingMatrix.matrixRows;
+    }
+
+    //умножение матрицы на вектор
+    public Matrix multiplyByVector(Vector vector) {
+        if (matrixRows[0].getSize() != vector.getSize()) {
+            throw new IllegalArgumentException("Количество столбцов матрицы не равно размеру вектора: " + matrixRows[0].getSize() +
+                    ", " + vector.getSize());
+        }
+
+        Matrix resultingMatrix = new Matrix(matrixRows.length, 1);
+        Vector resultingVector = new Vector(resultingMatrix.matrixRows[0].getSize());
+
+        for (int i = 0; i < matrixRows.length; i++) {
+            resultingVector.setComponentByIndex(0, Vector.getScalarProduct(matrixRows[i], vector));
+            resultingMatrix.setRowByIndex(i, resultingVector);
         }
 
         return resultingMatrix;
