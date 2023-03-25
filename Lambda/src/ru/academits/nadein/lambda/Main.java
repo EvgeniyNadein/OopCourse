@@ -3,6 +3,7 @@ package ru.academits.nadein.lambda;
 import java.util.*;
 
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
 public class Main {
@@ -58,5 +59,20 @@ public class Main {
                 .sorted((p1, p2) -> p2.age() - p1.age());
 
         personFrom20To45.forEach((person) -> System.out.printf("%s, %n", person));
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("¬ведите сколько элементов из потока корней чисел нужно пропустить:");
+        int skip = scanner.nextInt();
+
+        System.out.println("¬ведите 2лимит элементов из потока корней чисел:");
+        int limit = scanner.nextInt();
+
+        DoubleStream numbersSquareRoots = DoubleStream.iterate(0, x -> x +1)
+                .skip(skip)
+                .limit(limit)
+                .map(Math::sqrt);
+
+                numbersSquareRoots.forEach(System.out::println);
     }
 }
