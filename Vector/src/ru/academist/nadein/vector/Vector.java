@@ -7,7 +7,7 @@ public class Vector {
 
     public Vector(int size) {
         if (size == 0) {
-            throw new IllegalArgumentException("Размер вектора должен быть больше 0: " + size);
+            throw new IllegalArgumentException("Размер вектора должен быть больше 0. Текущий размер: " + size);
         }
 
         components = new double[size];
@@ -22,8 +22,9 @@ public class Vector {
     }
 
     public Vector(int size, double[] components) {
-        if (components.length == 0) {
-            throw new IllegalArgumentException("Массив не содержит элементов");
+        if (components.length != size) {
+            throw new IllegalArgumentException("Размер вектора должен быть равен размеру массива. " +
+                    "Текущий размер массива: " + components.length);
         }
 
         this.components = Arrays.copyOf(components, size);
@@ -86,17 +87,17 @@ public class Vector {
     }
 
     public static Vector getSum(Vector vector1, Vector vector2) {
-        Vector resultingVector = new Vector(vector1);
-        resultingVector.add(vector2);
+        Vector resultVector = new Vector(vector1);
+        resultVector.add(vector2);
 
-        return resultingVector;
+        return resultVector;
     }
 
     public static Vector getDifference(Vector vector1, Vector vector2) {
-        Vector resultingVector = new Vector(vector1);
-        resultingVector.subtract(vector2);
+        Vector resultVector = new Vector(vector1);
+        resultVector.subtract(vector2);
 
-        return resultingVector;
+        return resultVector;
     }
 
     public void multiplyByScalar(double scalar) {
@@ -110,7 +111,7 @@ public class Vector {
         int minVectorSize = Math.min(vector1.components.length, vector2.components.length);
 
         for (int i = 0; i < minVectorSize; i++) {
-            scalarProduct += vector1.getComponentByIndex(i) * vector2.getComponentByIndex(i);
+            scalarProduct += vector1.components[i] * vector2.components[i];
         }
 
         return scalarProduct;
@@ -141,12 +142,12 @@ public class Vector {
 
     // Реализовать метод вычисления длины вектора (длины отрезка в пространстве)
     public double getLength() {
-        double length = 0;
+        double squaresSum = 0;
 
         for (double component : components) {
-            length += component * component;
+            squaresSum += component * component;
         }
 
-        return Math.sqrt(length);
+        return Math.sqrt(squaresSum);
     }
 }

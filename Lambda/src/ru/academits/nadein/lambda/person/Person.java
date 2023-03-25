@@ -1,4 +1,4 @@
-package ru.academits.nadein.lambda;
+package ru.academits.nadein.lambda.person;
 
 public record Person(String name, int age) {
 }

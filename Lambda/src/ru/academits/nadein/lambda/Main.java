@@ -1,5 +1,7 @@
 package ru.academits.nadein.lambda;
 
+import ru.academits.nadein.lambda.person.Person;
+
 import java.util.*;
 
 import java.util.stream.Collectors;
