@@ -119,7 +119,7 @@ public class Matrix {
 
     public Vector getColumnByIndex(int index) {
         if (index < 0 || index >= getColumnsCount()) {
-            throw new ArrayIndexOutOfBoundsException("Индекс " + index + " выходит за границы матрицы. " +
+            throw new IndexOutOfBoundsException("Индекс " + index + " выходит за границы матрицы. " +
                     "Количество столбцов в матрице: " + getColumnsCount());
         }
 
