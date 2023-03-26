@@ -1,42 +1,36 @@
 package ru.academits.nadein.array_list_home;
 
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            Path path = Paths.get("ArrayListHome\\src\\textFile.txt");
-            FileReader fileReader = new FileReader(String.valueOf(path));
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-            ArrayList<String> stringsFromFile = new ArrayList<>();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("ArrayListHome/src/textFile.txt"))) {
+            ArrayList<String> linesFromFile = new ArrayList<>();
             String currentLine = bufferedReader.readLine();
 
             while (currentLine != null) {
-                stringsFromFile.add(currentLine);
+                linesFromFile.add(currentLine);
                 currentLine = bufferedReader.readLine();
             }
 
-            System.out.println("Количество элементов в списке (строк): " + stringsFromFile.size());
+            System.out.println("Количество элементов в списке (строк): " + linesFromFile.size());
             System.out.println();
-            System.out.println("Список: " + stringsFromFile);
+            System.out.println("Список: " + linesFromFile);
             System.out.println();
-            boolean isEmpty = stringsFromFile.isEmpty();
+            boolean isEmpty = linesFromFile.isEmpty();
             System.out.println("Список не содержит элементов: " + isEmpty);
             System.out.println();
             System.out.println("Построчный вывод списка: ");
 
-            for (String s : stringsFromFile) {
+            for (String s : linesFromFile) {
                 System.out.println(s);
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Что то пошло не так, проверьте файл.");  //лучше бы подсказать по тексту ошибки если что для тупых как я
         }
 
         System.out.println();
@@ -54,15 +48,14 @@ public class Main {
         System.out.println();
 
         ArrayList<Integer> integers2 = new ArrayList<>(Arrays.asList(1, 2, 4, 1, 1, 5, 2, 7, 8, 5, 9));
-        ArrayList<Integer> integers2WithoutRepeat = new ArrayList<>();
+        ArrayList<Integer> integers2WithoutRepeats = new ArrayList<>(integers2.size());
 
-        for (int i = 0; i < integers2.size(); i++) {
-            int currentElement = integers2.get(i);
-            if (integers2.indexOf(currentElement) == i) {
-                integers2WithoutRepeat.add(currentElement);
+        for (int currentElement : integers2) {
+            if (!integers2WithoutRepeats.contains(currentElement)) {
+                integers2WithoutRepeats.add(currentElement);
             }
         }
 
-        System.out.println("Список без повторений: " + integers2WithoutRepeat);
+        System.out.println("Список без повторений: " + integers2WithoutRepeats);
     }
 }
