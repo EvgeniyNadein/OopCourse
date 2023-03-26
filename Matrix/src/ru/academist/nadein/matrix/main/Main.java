@@ -5,10 +5,10 @@ import ru.academist.nadein.vector.Vector;
 
 public class Main {
     public static void main(String[] args) {
-        double[] inputArray1 = {1, 4};
-        Vector vector1 = new Vector(inputArray1);
-        double[] inputArray2 = {1, 2, 5};
-        Vector vector2 = new Vector(inputArray2);
+        double[] array1 = {1, 4};
+        Vector vector1 = new Vector(array1);
+        double[] array2 = {1, 2, 5};
+        Vector vector2 = new Vector(array2);
         Vector[] array = {vector1, vector2};
         Matrix matrix1 = new Matrix(array);
         Matrix matrix2 = new Matrix(matrix1);
@@ -52,6 +52,8 @@ public class Main {
         Matrix matrix6 = new Matrix(inputArray6);
         System.out.println(matrix5);
         System.out.println(matrix6);
+        matrix6.setRowByIndex(2, vector1);
+        System.out.println(matrix6);
         System.out.println("Умножение матриц: " + Matrix.getProduct(matrix6, matrix5));
         System.out.println();
 
@@ -61,5 +63,7 @@ public class Main {
 
         System.out.println(vector2);
         System.out.println(matrix6.multiplyByVector(vector2));
+
+
     }
 }
