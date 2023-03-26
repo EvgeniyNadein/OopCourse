@@ -52,7 +52,7 @@ public class Main {
         Matrix matrix6 = new Matrix(inputArray6);
         System.out.println(matrix5);
         System.out.println(matrix6);
-        matrix6.setRowByIndex(2, vector1);
+        matrix4.setRowByIndex(2, vector2);
         System.out.println(matrix6);
         System.out.println("Умножение матриц: " + Matrix.getProduct(matrix6, matrix5));
         System.out.println();
