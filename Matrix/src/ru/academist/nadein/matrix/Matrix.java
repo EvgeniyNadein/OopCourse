@@ -107,7 +107,7 @@ public class Matrix {
     public void setRowByIndex(int index, Vector vector) {
         if (index < 0 || index >= rows.length) {
             throw new ArrayIndexOutOfBoundsException("Индекс " + index + " выходит за границы матрицы. " +
-                    "Количество строк в матрице: " + getRowsCount());
+                    "Количество строк в матрице: " + rows.length);
         }
 
         if (vector.getSize() != getColumnsCount()) {
@@ -144,7 +144,7 @@ public class Matrix {
                     ", матрица 2: " + matrix.rows.length);
         }
 
-        if (rows[0].getSize() != matrix.getColumnsCount()) {
+        if (getColumnsCount() != matrix.getColumnsCount()) {
             throw new IllegalArgumentException("Количество столбцов матриц не равно: матрица 1:" + getColumnsCount() +
                     ", матрица 2: " + matrix.getColumnsCount());
         }
@@ -185,18 +185,18 @@ public class Matrix {
     }
 
     public static Matrix getProduct(Matrix matrix1, Matrix matrix2) {
-        if (matrix1.getColumnsCount() != matrix2.rows.length) {
+        if (matrix1.getColumnsCount() != matrix2.getRowsCount()) {
             throw new IllegalArgumentException("Количество столбцов первой матрицы: " + matrix1.getColumnsCount()
-                    + " должно быть ровно количеству строк второй матрицы: " + matrix2.rows.length);
+                    + " должно быть ровно количеству строк второй матрицы: " + matrix2.getRowsCount());
         }
 
-        Matrix resultMatrix = new Matrix(matrix1.rows.length, matrix2.getColumnsCount());
+        Matrix resultMatrix = new Matrix(matrix1.getRowsCount(), matrix2.getColumnsCount());
 
-        for (int i = 0; i < matrix1.rows.length; i++) {
-            for (int j = 0; j < matrix1.rows.length; j++) {
+        for (int i = 0; i < matrix1.getRowsCount(); i++) {
+            for (int j = 0; j < matrix2.getColumnsCount(); j++) {
                 double resultComponent = 0;
                 for (int k = 0; k < matrix1.getColumnsCount(); k++) {
-                    resultComponent += matrix1.rows[i].getComponentByIndex(k) * matrix2.getColumnByIndex(j).getComponentByIndex(k);
+                    resultComponent += matrix1.rows[i].getComponentByIndex(k) * matrix2.rows[k].getComponentByIndex(j);
                 }
 
                 resultMatrix.rows[i].setComponentByIndex(j, resultComponent);
