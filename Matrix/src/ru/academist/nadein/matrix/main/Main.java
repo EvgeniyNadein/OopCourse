@@ -53,7 +53,6 @@ public class Main {
         System.out.println(matrix5);
         System.out.println(matrix6);
         matrix4.setRowByIndex(2, vector2);
-        System.out.println(matrix6);
         System.out.println("Умножение матриц: " + Matrix.getProduct(matrix6, matrix5));
         System.out.println();
 
@@ -72,7 +71,5 @@ public class Main {
 
         System.out.println(vector2);
         System.out.println(matrix6.multiplyByVector(vector2));
-
-
     }
 }
