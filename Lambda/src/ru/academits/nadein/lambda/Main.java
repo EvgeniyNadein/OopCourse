@@ -29,12 +29,7 @@ public class Main {
         System.out.println(uniqueNames);
         System.out.println();
 
-        String uniqueNamesString = persons.stream()
-                .map(Person::name)
-                .distinct()
-                .collect(Collectors.joining(", ", "»мена: ", "."));
-
-        System.out.println(uniqueNamesString);
+        System.out.println(uniqueNames.stream().collect(Collectors.joining(", ", "»мена: ", ".")));
         System.out.println();
 
         OptionalDouble averageAge = persons.stream()
@@ -44,37 +39,37 @@ public class Main {
 
         if (averageAge.isPresent()) {
             System.out.println("—редний возраст людей младше 18: " + averageAge.getAsDouble());
+        } else {
+            System.out.println("Ћюдей младше 18 лет в списке нет.");
         }
 
         System.out.println();
 
-        Map<String, Double> averageAgeByPersons = persons.stream()
-                .collect(Collectors.groupingBy(Person::name,
-                        Collectors.averagingDouble(Person::age)));
+        Map<String, Double> averageAgeByNames = persons.stream()
+                .collect(Collectors.groupingBy(Person::name, Collectors.averagingDouble(Person::age)));
 
-        averageAgeByPersons.forEach((name, p) -> System.out.printf("name %s: %s%n", name, p));
+        averageAgeByNames.forEach((name, middleAge) -> System.out.printf("name %s: %s%n", name, middleAge)); // averageAge уже существует
         System.out.println();
 
-        Stream<Person> personFrom20To45 = persons.stream()
-                .filter(p -> p.age() >= 20)
-                .filter(p -> p.age() <= 45)
+        Stream<Person> personsFrom20To45 = persons.stream()
+                .filter(p -> p.age() >= 20 && p.age() <= 45)
                 .sorted((p1, p2) -> p2.age() - p1.age());
 
-        personFrom20To45.forEach((person) -> System.out.printf("%s, %n", person));
+        personsFrom20To45.forEach(person -> System.out.printf("%s, %n", person));
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("¬ведите сколько элементов из потока корней чисел нужно пропустить:");
-        int skip = scanner.nextInt();
+        int skipItem = scanner.nextInt();
 
-        System.out.println("¬ведите 2лимит элементов из потока корней чисел:");
-        int limit = scanner.nextInt();
+        System.out.println("¬ведите лимит элементов из потока корней чисел:");
+        int limitItem = scanner.nextInt();
 
-        DoubleStream numbersSquareRoots = DoubleStream.iterate(0, x -> x +1)
-                .skip(skip)
-                .limit(limit)
-                .map(Math::sqrt);
+        DoubleStream numbersSquareRoots = DoubleStream.iterate(0, x -> x + 1)
+                .map(Math::sqrt)
+                .skip(skipItem)
+                .limit(limitItem);
 
-                numbersSquareRoots.forEach(System.out::println);
+        numbersSquareRoots.forEach(System.out::println);
     }
 }
