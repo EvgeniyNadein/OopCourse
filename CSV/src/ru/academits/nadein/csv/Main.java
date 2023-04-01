@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         int stringsCountInFile = 0;
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("CSV/src/ZadachaCSV.csv"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("CSV/src/zadachaCSV2.csv"))) {
 
             while (bufferedReader.readLine() != null) {
                 stringsCountInFile++;
@@ -18,7 +18,7 @@ public class Main {
             System.out.println("Что то пошло не так, проверьте файл.");
         }
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("CSV/src/ZadachaCSV.csv"));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("CSV/src/zadachaCSV2.csv"));
              PrintWriter writer = new PrintWriter("FileInHtml.html")) {
 
             String[] linesFromFile = new String[stringsCountInFile];
@@ -49,15 +49,16 @@ public class Main {
                     writer.println("<tr>");
                     writer.println("<td>");
                 }
+
                 if (j > 0 && !isLineBreak) {
                     writer.println("<tr>");
                     writer.println("<td>");
                 }
+
                 for (int k = 0; k < linesFromFile[j].length() - 2; k++) {
                     char symbol = linesFromFile[j].charAt(k);
                     char nextSymbol = linesFromFile[j].charAt(k + 1);
                     char thirdSymbol = linesFromFile[j].charAt(k + 2);
-
 
                     if (symbol == ',' && nextSymbol != '"' && thirdSymbol != ',') {
                         writer.println("</td>");
@@ -66,6 +67,7 @@ public class Main {
 
                     if (symbol == ',' && nextSymbol == '"' && thirdSymbol == ',') {
                         writer.println(symbol);
+                        isLineBreak = false;
                         writer.println("</td>");
                         writer.println("<td>");
                         continue;
