@@ -22,7 +22,7 @@ public class Main {
             boolean isEmpty = linesFromFile.isEmpty();
             System.out.println("Список не содержит элементов: " + isEmpty);
             System.out.println();
-            System.out.println("Построчный вывод списка: ");
+            System.out.println("Построчный вывод списка:");
 
             for (String s : linesFromFile) {
                 System.out.println(s);
@@ -30,7 +30,7 @@ public class Main {
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
         } catch (IOException e) {
-            System.out.println("Что то пошло не так, проверьте файл.");  //лучше бы подсказать по тексту ошибки если что для тупых как я
+            System.out.println("Что то пошло не так, проверьте файл.");
         }
 
         System.out.println();
@@ -50,7 +50,7 @@ public class Main {
         ArrayList<Integer> integers2 = new ArrayList<>(Arrays.asList(1, 2, 4, 1, 1, 5, 2, 7, 8, 5, 9));
         ArrayList<Integer> integers2WithoutRepeats = new ArrayList<>(integers2.size());
 
-        for (int currentElement : integers2) {
+        for (Integer currentElement : integers2) {
             if (!integers2WithoutRepeats.contains(currentElement)) {
                 integers2WithoutRepeats.add(currentElement);
             }
