@@ -17,10 +17,10 @@ public class Main {
         System.out.println(matrix2);
         System.out.println();
 
-        System.out.println("Колонка матрицы2 по индексу: " + matrix2.getColumnByIndex(1));
+        System.out.println("Столбец матрицы2 по индексу: " + matrix2.getColumnByIndex(1));
         System.out.println("Строка матрицы2 по индексу: " + matrix2.getRowByIndex(1));
         System.out.println("Количество строк матрицы2: " + matrix2.getRowsCount());
-        System.out.println("Количество колонок матрицы2: " + matrix2.getColumnsCount());
+        System.out.println("Количество столбцов матрицы2: " + matrix2.getColumnsCount());
         System.out.println();
 
         matrix2.add(matrix1);
