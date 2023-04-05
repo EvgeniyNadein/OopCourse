@@ -40,7 +40,7 @@ public class Main {
             writer.println("<title>Моя страница HTML из CSV</title>");
             writer.println("<meta charset=\"utf-8\">");
             writer.println("</head>");
-            writer.println("<table>");
+            writer.println("<table border=\"1\" width=\"10\" height=\"10\">");
 
             boolean isLineBreak = false;
 
@@ -126,5 +126,6 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Что то пошло не так, проверьте файл.");
         }
-    }
+    } // т.к получился говнокод (сам вижу)), хотя казалось норм идея, есть вариант переписать с ArrayList строк
+//  и использовать строковые функции например replace() (нужно подсказать).
 }
