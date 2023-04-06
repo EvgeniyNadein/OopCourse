@@ -32,13 +32,13 @@ public class Main {
         System.out.println(uniqueNames.stream().collect(Collectors.joining(", ", "Èìåíà: ", ".")));
         System.out.println();
 
-        OptionalDouble averageAgeByPersons = persons.stream()
+        OptionalDouble personsUnder18AverageAge = persons.stream()
                 .filter(p -> p.age() < 18)
                 .mapToInt(Person::age)
                 .average();
 
-        if (averageAgeByPersons.isPresent()) {
-            System.out.println("Ñğåäíèé âîçğàñò ëşäåé ìëàäøå 18: " + averageAgeByPersons.getAsDouble());
+        if (personsUnder18AverageAge.isPresent()) {
+            System.out.println("Ñğåäíèé âîçğàñò ëşäåé ìëàäøå 18: " + personsUnder18AverageAge.getAsDouble());
         } else {
             System.out.println("Ëşäåé ìëàäøå 18 ëåò â ñïèñêå íåò.");
         }
