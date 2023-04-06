@@ -32,23 +32,23 @@ public class Main {
         System.out.println(uniqueNames.stream().collect(Collectors.joining(", ", "»мена: ", ".")));
         System.out.println();
 
-        OptionalDouble averageAge = persons.stream()
+        OptionalDouble averageAgeByPersons = persons.stream()
                 .filter(p -> p.age() < 18)
-                .mapToDouble(Person::age)
+                .mapToInt(Person::age)
                 .average();
 
-        if (averageAge.isPresent()) {
-            System.out.println("—редний возраст людей младше 18: " + averageAge.getAsDouble());
+        if (averageAgeByPersons.isPresent()) {
+            System.out.println("—редний возраст людей младше 18: " + averageAgeByPersons.getAsDouble());
         } else {
             System.out.println("Ћюдей младше 18 лет в списке нет.");
         }
 
         System.out.println();
 
-        Map<String, Double> averageAgeByNames = persons.stream()
-                .collect(Collectors.groupingBy(Person::name, Collectors.averagingDouble(Person::age)));
+        Map<String, Double> averageAgesByNames = persons.stream()
+                .collect(Collectors.groupingBy(Person::name, Collectors.averagingInt(Person::age)));
 
-        averageAgeByNames.forEach((name, middleAge) -> System.out.printf("name %s: %s%n", name, middleAge)); // averageAge уже существует
+        averageAgesByNames.forEach((name, averageAge) -> System.out.printf("name %s: %s%n", name, averageAge));
         System.out.println();
 
         Stream<Person> personsFrom20To45 = persons.stream()
@@ -60,15 +60,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("¬ведите сколько элементов из потока корней чисел нужно пропустить:");
-        int skipItem = scanner.nextInt();
+        int skipSquareRootsCount = scanner.nextInt();
 
         System.out.println("¬ведите лимит элементов из потока корней чисел:");
-        int limitItem = scanner.nextInt();
+        int squareRootsCount = scanner.nextInt();
 
         DoubleStream numbersSquareRoots = DoubleStream.iterate(0, x -> x + 1)
                 .map(Math::sqrt)
-                .skip(skipItem)
-                .limit(limitItem);
+                .skip(skipSquareRootsCount)
+                .limit(squareRootsCount);
 
         numbersSquareRoots.forEach(System.out::println);
     }
