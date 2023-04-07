@@ -1,11 +1,10 @@
 package ru.academits.nadein.csv;
 
 import java.io.*;
-import java.util.ArrayList;
 
 public class MainVersion2 {
     public static void main(String[] args) {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("CSV/src/ZadachaCSV2.csv"));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("CSV/src/zadachaCSV2.csv"));
              PrintWriter writer = new PrintWriter("FileInHtml.html")) {
 
             writer.println("<!DOCTYPE HTML>");
@@ -20,11 +19,11 @@ public class MainVersion2 {
             String subString;
 
             while (currentLine != null) {
-                currentLine = bufferedReader.readLine();
+
                 writer.println("<tr>");
 
-                while (currentLine.length() > 0) {
-                    while (currentLine.indexOf(',') > 0) {
+                while (currentLine.length() > 1) {
+                    if (currentLine.contains(",")) {
                         if (!currentLine.startsWith("\"")) {
                             subString = currentLine.substring(0, currentLine.indexOf(',') - 1);
                             subString = subString.replaceAll("&", "&amp");
@@ -36,9 +35,8 @@ public class MainVersion2 {
                             writer.println("</td>");
 
                             currentLine = currentLine.substring(currentLine.indexOf(',') + 1);
-                        }
-
-                        if (currentLine.startsWith("\"")) {
+                            continue;
+                        }else {
                             subString = currentLine.substring(currentLine.indexOf('"') + 1);
 
                             if (currentLine.contains(",\",")) {
@@ -55,6 +53,7 @@ public class MainVersion2 {
                                 writer.println("</td>");
 
                                 currentLine = currentLine.substring(currentLine.indexOf(",\",") + 1);
+
                             }
 
                             if (currentLine.contains("\",") && !currentLine.contains(",\",")) {
@@ -71,42 +70,65 @@ public class MainVersion2 {
 
                                 currentLine = currentLine.substring(currentLine.indexOf("\",") + 1);
                             }
+
+                            subString = subString.replaceAll("&", "&amp");
+                            subString = subString.replaceAll("<", "&lt");
+                            subString = subString.replaceAll(">", "&gt");
+                            subString = subString.replaceAll("\"\"", "\"");
+
+                            subString = subString.concat("<br>");
+                            writer.println("<td>");
+                            writer.println(subString);
+                            writer.println("</td>");
+
+                            continue;
                         }
                     }
 
                     if (currentLine.startsWith("\"")) {
-                        subString = currentLine.substring(currentLine.indexOf('"') + 1);
+                        if (currentLine.endsWith("\"")) {
+                            subString = currentLine.substring(currentLine.indexOf('"') + 1, currentLine.indexOf("\""));
 
-                        subString = currentLine.replaceAll("&", "&amp");
-                        subString = currentLine.replaceAll("<", "&lt");
-                        subString = currentLine.replaceAll(">", "&gt");
-                        subString = subString.replaceAll("\"\"", "\"");
+                            subString = subString.replaceAll("&", "&amp");
+                            subString = subString.replaceAll("<", "&lt");
+                            subString = subString.replaceAll(">", "&gt");
+                            subString = subString.replaceAll("\"\"", "\"");
 
-                        subString = subString.concat("<br>");
-                        writer.println("<td>");
-                        writer.println(subString);
-                        writer.println("</td>");
+                            writer.println("<td>");
+                            writer.println(subString);
+                            writer.println("</td>");
+                            writer.println("</tr>");
+                            currentLine = "";
+
+                        } else {
+                            currentLine = currentLine.substring(currentLine.indexOf('"') + 1);
+
+                            currentLine = currentLine.replaceAll("&", "&amp");
+                            currentLine = currentLine.replaceAll("<", "&lt");
+                            currentLine = currentLine.replaceAll(">", "&gt");
+                            currentLine = currentLine.replaceAll("\"\"", "\"");
+
+                            currentLine = currentLine.concat("<br>");
+                            writer.println("<td>");
+                            writer.println(currentLine);
+                            writer.println("</td>");
+
+                        }
+
                     }
-
-
                 }
 
                 writer.println("<td>");
-                writer.println("");
+                writer.println(currentLine);
                 writer.println("</td>");
                 writer.println("</tr>");
 
-
-
+                currentLine = bufferedReader.readLine();
             }
+        } catch (FileNotFoundException e) {
+            System.out.println("Файл не найден");
+        } catch (IOException e) {
+            System.out.println("Что то пошло не так, проверьте файл.");
         }
     }
-
-
-} catch(FileNotFoundException e){
-        System.out.println("Файл не найден");
-        }catch(IOException e){
-        System.out.println("Что то пошло не так, проверьте файл.");
-        }
-        }
-        }
+}
