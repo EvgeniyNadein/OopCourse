@@ -113,6 +113,7 @@ public class MainVersion2 {
                             writer.println(currentLine);
                             writer.println("</td>");
 
+
                         }
 
                     }
