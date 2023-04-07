@@ -112,8 +112,6 @@ public class MainVersion2 {
                             writer.println("<td>");
                             writer.println(currentLine);
                             writer.println("</td>");
-
-
                         }
 
                     }
