@@ -5,34 +5,15 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int stringsCountInFile = 0;
-
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("CSV/src/zadachaCSV2.csv"))) {
-
-            while (bufferedReader.readLine() != null) {
-                stringsCountInFile++;
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден");
-        } catch (IOException e) {
-            System.out.println("Что то пошло не так, проверьте файл.");
-        }
-
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("CSV/src/zadachaCSV2.csv"));
              PrintWriter writer = new PrintWriter("FileInHtml.html")) {
 
-            String[] linesFromFile = new String[stringsCountInFile];
             String currentLine = bufferedReader.readLine();
 
-            int i = 0;
-
             while (currentLine != null) {
-                linesFromFile[i] = currentLine;
                 currentLine = bufferedReader.readLine();
-                i++;
-            }
 
-            System.out.println(Arrays.toString(linesFromFile));
+            }
 
             writer.println("<!DOCTYPE HTML>");
             writer.println("<html>");
@@ -40,6 +21,7 @@ public class Main {
             writer.println("<title>Моя страница HTML из CSV</title>");
             writer.println("<meta charset=\"utf-8\">");
             writer.println("</head>");
+            writer.println("<body>");
             writer.println("<table border=\"1\" width=\"10\" height=\"10\">");
 
             boolean isLineBreak = false;
@@ -119,6 +101,7 @@ public class Main {
             }
 
             writer.println("</table>");
+            writer.println("</body>");
             writer.println("</html>");
 
         } catch (FileNotFoundException e) {
