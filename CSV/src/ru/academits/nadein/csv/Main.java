@@ -15,7 +15,7 @@ public class Main {
             writer.println("<meta charset=\"utf-8\">");
             writer.println("</head>");
             writer.println("<body>");
-            writer.println("<table border=\"1\" width=\"10\" height=\"10\">");
+            writer.println("<table border=\"1\" width=\"10\">");
 
             String currentLine = bufferedReader.readLine();
             boolean isTableDetail = false;
