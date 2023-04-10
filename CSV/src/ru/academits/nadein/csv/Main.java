@@ -36,6 +36,18 @@ public class Main {
                     char symbol = currentLine.charAt(i);
                     char nextSymbol = currentLine.charAt(i + 1);
 
+                    if (symbol == '<') {
+                        writer.println("&lt");
+                    }
+
+                        if (symbol == '>') {
+                            writer.println("&gt");
+                        }
+
+                            if (symbol == '&') {
+                                writer.println("&amp");
+                            }
+
                     if (symbol == ',' && nextSymbol == '"' && !isTableDetail) {
                         isTableDetail = true;
                         writer.println();
