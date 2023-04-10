@@ -117,7 +117,7 @@ public class Main {
                 }
 
                 if (!isTableDetail) {
-                    writer.println();
+                   // writer.println();
                     writer.println("</tr>");
                 }
 
