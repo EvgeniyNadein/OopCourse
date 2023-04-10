@@ -103,6 +103,7 @@ public class Main {
                         writer.println("    </td>");
                     }
                 }
+
                 if (!isTableDetail) {
                     writer.println();
                     writer.println("</tr>");
@@ -113,8 +114,6 @@ public class Main {
             writer.println("</table>");
             writer.println("</body>");
             writer.println("</html>");
-
-
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
         } catch (IOException e) {
